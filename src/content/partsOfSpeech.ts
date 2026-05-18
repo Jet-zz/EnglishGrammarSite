@@ -5,6 +5,7 @@ export type PartOfSpeech = {
   examples: string[];
   sentence: string;
   note: string;
+  linkTo?: string;
 };
 
 export const partsOfSpeech: PartOfSpeech[] = [
@@ -23,6 +24,7 @@ export const partsOfSpeech: PartOfSpeech[] = [
     examples: ["run", "eat", "be", "have"],
     sentence: "She runs every morning.",
     note: "动词进入句子后，常常承担谓语的核心。",
+    linkTo: "/grammar/verbs",
   },
   {
     name: "形容词",

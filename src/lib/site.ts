@@ -7,6 +7,7 @@ export const navigation = [
   { name: "首页", href: "/" },
   { name: "结构总览", href: "/grammar/structure-overview" },
   { name: "词性", href: "/grammar/parts-of-speech" },
+  { name: "谓语动词", href: "/grammar/verbs" },
   { name: "句子成分", href: "/grammar/sentence-elements" },
   { name: "五大句型", href: "/grammar/sentence-patterns" },
   { name: "时态", href: "/grammar/tenses" },

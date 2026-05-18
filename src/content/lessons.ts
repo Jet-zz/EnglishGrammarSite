@@ -25,6 +25,12 @@ export const lessons: Lesson[] = [
     level: "入门",
   },
   {
+    title: "认识谓语动词",
+    description: "实义动词与系动词，理解句子引擎如何驱动五大句型。",
+    href: "/grammar/verbs",
+    level: "基础",
+  },
+  {
     title: "五大基本句型",
     description: "把句子成分组合成五种主干结构，看懂谁、做什么、作用到谁、补充说明什么。",
     href: "/grammar/sentence-patterns",
@@ -55,7 +61,7 @@ export const learningPath = [
     stage: "第二阶段",
     title: "认识句子",
     description: "再看单词进入句子后承担什么角色。",
-    items: ["句子成分", "五大基本句型"],
+    items: ["句子成分", "认识谓语动词", "五大基本句型"],
   },
   {
     stage: "第三阶段",
