@@ -18,7 +18,7 @@ export const sentencePatterns: SentencePattern[] = [
   {
     name: "主谓",
     formula: "Subject + Verb",
-    explanation: "句子只有主语和谓语，动作本身已经完整，不需要宾语。",
+    explanation: "主语+不及物动词，动作本身已经完整，不需要宾语。",
     examples: [
       { english: "Birds fly.", chinese: "鸟会飞。", breakdown: "Birds = 主语，fly = 谓语" },
       { english: "You laugh.", chinese: "你笑了。", breakdown: "You = 主语，laugh = 谓语" },
