@@ -27,7 +27,7 @@ export const sentencePatterns: SentencePattern[] = [
   {
     name: "主谓宾",
     formula: "Subject + Verb + Object",
-    explanation: "谓语动作作用到一个对象上，这个对象就是宾语。",
+    explanation: "主语+及物动词+宾语，动作作用到一个对象上，这个对象就是宾语。",
     examples: [
       { english: "I love you.", chinese: "我爱你。", breakdown: "I = 主语，love = 谓语，you = 宾语" },
       { english: "She reads books.", chinese: "她读书。", breakdown: "She = 主语，reads = 谓语，books = 宾语" },
@@ -45,7 +45,7 @@ export const sentencePatterns: SentencePattern[] = [
   {
     name: "主谓双宾",
     formula: "Subject + Verb + Indirect Object + Direct Object",
-    explanation: "一个动作涉及两个宾语：人通常是间接宾语，物通常是直接宾语。",
+    explanation: "主语+及物动词+双宾语，人通常是间接宾语，物通常是直接宾语。",
     examples: [
       { english: "I gave you an apple.", chinese: "我给了你一个苹果。", breakdown: "you = 间接宾语，an apple = 直接宾语" },
       { english: "She sent me a message.", chinese: "她给我发了一条消息。", breakdown: "me = 间接宾语，a message = 直接宾语" },
@@ -54,7 +54,7 @@ export const sentencePatterns: SentencePattern[] = [
   {
     name: "主谓宾补",
     formula: "Subject + Verb + Object + Object Complement",
-    explanation: "宾语后面还有一个补充说明，用来说明宾语的状态、身份或结果。",
+    explanation: "主语+及物动词+宾语+宾语补足语，补语用来说明宾语的状态、身份或结果。",
     examples: [
       { english: "I made you happy.", chinese: "我让你开心。", breakdown: "you = 宾语，happy = 宾语补足语" },
       { english: "They named the dog Max.", chinese: "他们给这只狗取名 Max。", breakdown: "the dog = 宾语，Max = 宾语补足语" },
