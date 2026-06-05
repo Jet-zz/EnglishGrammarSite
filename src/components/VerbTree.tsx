@@ -1,6 +1,6 @@
 const realBranches = [
-  { name: "及物动词", desc: "后面必须接宾语", examples: ["I love you.", "She reads books."] },
-  { name: "不及物动词", desc: "动作本身完整", examples: ["Birds fly.", "He runs."] },
+  { name: "及物动词", desc: "后面必须接宾语" },
+  { name: "不及物动词", desc: "动作本身完整" },
 ];
 
 const linkBranches = [
@@ -37,7 +37,7 @@ export function VerbTree() {
         {/* 实义动词 */}
         <div className="rounded-2xl border-2 border-amber-300 bg-gradient-to-b from-amber-50 to-white p-6 shadow-md">
           <div className="text-center">
-            <span className="rounded-full bg-amber-100 px-4 py-1.5 text-sm font-bold text-amber-700">实义动词</span>
+            <span className="rounded-full bg-amber-100 px-6 py-2 text-lg font-bold text-amber-700">实义动词</span>
             <p className="mt-2 text-sm text-amber-600">有实际动作含义，独立做谓语</p>
           </div>
           <div className="mt-5 grid gap-4">
@@ -45,13 +45,6 @@ export function VerbTree() {
               <div key={b.name} className="rounded-xl border border-amber-200 bg-white p-4">
                 <p className="text-base font-bold text-amber-900">{b.name}</p>
                 <p className="mt-0.5 text-sm text-amber-600">{b.desc}</p>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {b.examples.map((ex) => (
-                    <span key={ex} className="rounded-lg bg-amber-50 px-3 py-1.5 font-mono text-sm text-slate-700">
-                      {ex}
-                    </span>
-                  ))}
-                </div>
               </div>
             ))}
           </div>
@@ -60,7 +53,7 @@ export function VerbTree() {
         {/* 非实义动词 */}
         <div className="rounded-2xl border-2 border-purple-300 bg-gradient-to-b from-purple-50 to-white p-6 shadow-md">
           <div className="text-center">
-            <span className="rounded-full bg-purple-100 px-4 py-1.5 text-sm font-bold text-purple-700">
+            <span className="rounded-full bg-purple-100 px-6 py-2 text-lg font-bold text-purple-700">
               非实义动词 · 系动词
             </span>
             <p className="mt-2 text-sm text-purple-600">连接主语和表语，说明主语的状态</p>
