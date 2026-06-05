@@ -18,7 +18,7 @@ export default function VerbsPage() {
 
       {/* 实义动词 */}
       <section className="mt-6">
-        <h2 className="text-lg font-bold text-slate-950">实义动词</h2>
+        <h2 className="rounded-lg border-l-4 border-amber-500 bg-amber-50 px-4 py-3 text-xl font-bold text-amber-900">实义动词</h2>
         <div className="mt-3 grid gap-3 sm:grid-cols-2">
           {contentVerbs2.map((v) => (
             <div key={v.name} className="rounded-xl border border-amber-200 bg-white p-4 shadow-sm">
@@ -40,7 +40,7 @@ export default function VerbsPage() {
 
       {/* 系动词 */}
       <section className="mt-6">
-        <h2 className="text-lg font-bold text-slate-950">非实义动词（系动词）</h2>
+        <h2 className="rounded-lg border-l-4 border-purple-500 bg-purple-50 px-4 py-3 text-xl font-bold text-purple-900">非实义动词（系动词）</h2>
         <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {linkingVerbs.map((v) => (
             <div key={v.name} className="rounded-xl border border-purple-200 bg-white p-4 shadow-sm">
