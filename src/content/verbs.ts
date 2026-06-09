@@ -15,6 +15,48 @@ export const contentVerbs = {
   },
 };
 
+export const verbFeatures = {
+  title: "三态一否一一致",
+  subtitle: "谓语动词承载的五大语法特征",
+  items: [
+    {
+      name: "情态",
+      english: "Mood",
+      desc: "说话的语气：陈述事实、发出命令、表达假设等。",
+      keywords: "陈述语气 / 祈使语气 / 虚拟语气",
+      color: "blue",
+    },
+    {
+      name: "时态",
+      english: "Tense",
+      desc: "动作发生的时间：过去、现在、将来及其组合。",
+      keywords: "16 种时态（见时态专题）",
+      color: "emerald",
+    },
+    {
+      name: "语态",
+      english: "Voice",
+      desc: "主语是动作的执行者还是承受者。",
+      keywords: "主动语态 / 被动语态",
+      color: "purple",
+    },
+    {
+      name: "一致",
+      english: "Agreement",
+      desc: "主语和谓语在人称和数上保持一致。",
+      keywords: "三单加 -s / be 动词变形",
+      color: "amber",
+    },
+    {
+      name: "否定",
+      english: "Negation",
+      desc: "在助动词或 be 动词后加 not 构成否定句。",
+      keywords: "do not / is not / will not",
+      color: "rose",
+    },
+  ],
+};
+
 export const contentVerbs2: VerbCategory[] = [
   {
     name: "及物动词",
