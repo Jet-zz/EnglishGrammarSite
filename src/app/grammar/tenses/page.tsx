@@ -17,7 +17,7 @@ function tenseNameColor(name: string): string {
 function cellColor(time: string, aspect: string): string {
   const key = `${time}-${aspect}`;
   const red = new Set(["现在-一般", "现在-进行", "过去-一般", "将来-一般"]);
-  const yellow = new Set(["现在-完成", "过去-进行", "过去-完成", "过去将来-进行"]);
+  const yellow = new Set(["现在-完成", "过去-进行", "过去-完成", "过去将来-一般"]);
   const green = new Set(["现在-完成进行", "将来-进行", "将来-完成"]);
   if (red.has(key)) return "text-red-600 font-semibold";
   if (yellow.has(key)) return "text-yellow-600 font-semibold";
