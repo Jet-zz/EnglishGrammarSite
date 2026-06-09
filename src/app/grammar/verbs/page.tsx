@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SectionHeading } from "@/components/SectionHeading";
 import { contentVerbs, contentVerbs2, linkingVerbs, verbFeatures } from "@/content/verbs";
 
@@ -75,15 +76,23 @@ export default function VerbsPage() {
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {verbFeatures.items.map((f) => {
             const c = featureColors[f.color]!;
-            return (
-              <div key={f.name} className={`rounded-xl border-l-4 ${c.border} ${c.bg} p-4 shadow-sm`}>
+            const isTense = f.name === "时态";
+            const card = (
+              <div className={`rounded-xl border-l-4 ${c.border} ${c.bg} p-4 shadow-sm ${isTense ? "transition hover:shadow-md hover:brightness-95" : ""}`}>
                 <div className="flex items-center gap-2">
                   <span className="text-lg font-bold text-slate-900">{f.name}</span>
                   <span className={`rounded px-1.5 py-0.5 text-xs font-medium ${c.badge}`}>{f.english}</span>
                 </div>
                 <p className="mt-2 text-sm leading-5 text-slate-600">{f.desc}</p>
-                <p className="mt-2 text-xs text-slate-400">{f.keywords}</p>
+                <p className="mt-2 text-xs text-slate-400">{isTense ? "点击进入时态专题 →" : f.keywords}</p>
               </div>
+            );
+            return isTense ? (
+              <Link key={f.name} href="/grammar/tenses" className="block">
+                {card}
+              </Link>
+            ) : (
+              <div key={f.name}>{card}</div>
             );
           })}
         </div>

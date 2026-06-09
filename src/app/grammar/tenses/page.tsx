@@ -2,6 +2,29 @@ import { ExampleBlock } from "@/components/ExampleBlock";
 import { SectionHeading } from "@/components/SectionHeading";
 import { tenseMatrix, tenses } from "@/content/tenses";
 
+/** 根据时态名称返回文字颜色 */
+function tenseNameColor(name: string): string {
+  const red = new Set(["一般现在时", "一般过去时", "一般将来时", "现在进行时"]);
+  const yellow = new Set(["过去进行时", "过去将来进行时", "现在完成时", "过去完成时"]);
+  const green = new Set(["将来进行时", "将来完成时", "现在完成进行时"]);
+  if (red.has(name)) return "text-red-600";
+  if (yellow.has(name)) return "text-yellow-600";
+  if (green.has(name)) return "text-green-600";
+  return "text-slate-950";
+}
+
+/** 根据时间 + 体返回单元格文字颜色 */
+function cellColor(time: string, aspect: string): string {
+  const key = `${time}-${aspect}`;
+  const red = new Set(["现在-一般", "现在-进行", "过去-一般", "将来-一般"]);
+  const yellow = new Set(["现在-完成", "过去-进行", "过去-完成", "过去将来-进行"]);
+  const green = new Set(["现在-完成进行", "将来-进行", "将来-完成"]);
+  if (red.has(key)) return "text-red-600 font-semibold";
+  if (yellow.has(key)) return "text-yellow-600 font-semibold";
+  if (green.has(key)) return "text-green-600 font-semibold";
+  return "text-slate-500";
+}
+
 export default function TensesPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 lg:px-8">
@@ -25,12 +48,12 @@ export default function TensesPage() {
             </thead>
             <tbody className="divide-y divide-slate-100">
               {tenseMatrix.map((row) => (
-                <tr key={row.time} className="text-slate-700">
+                <tr key={row.time}>
                   <th className="bg-slate-50 px-3 py-2.5 font-semibold text-slate-950">{row.time}</th>
-                  <td className="px-3 py-2.5 font-mono text-xs">{row.simple}</td>
-                  <td className="px-3 py-2.5 font-mono text-xs">{row.continuous}</td>
-                  <td className="px-3 py-2.5 font-mono text-xs">{row.perfect}</td>
-                  <td className="px-3 py-2.5 font-mono text-xs">{row.perfectContinuous}</td>
+                  <td className={`px-3 py-2.5 font-mono text-xs ${cellColor(row.time, "一般")}`}>{row.simple}</td>
+                  <td className={`px-3 py-2.5 font-mono text-xs ${cellColor(row.time, "进行")}`}>{row.continuous}</td>
+                  <td className={`px-3 py-2.5 font-mono text-xs ${cellColor(row.time, "完成")}`}>{row.perfect}</td>
+                  <td className={`px-3 py-2.5 font-mono text-xs ${cellColor(row.time, "完成进行")}`}>{row.perfectContinuous}</td>
                 </tr>
               ))}
             </tbody>
@@ -44,7 +67,7 @@ export default function TensesPage() {
             <div className="flex items-start gap-4">
               <div className="w-72 shrink-0">
                 <p className="text-xs font-semibold text-blue-600">{tense.englishName}</p>
-                <h2 className="mt-1 text-lg font-bold text-slate-950">{tense.name}</h2>
+                <h2 className={`mt-1 text-lg font-bold ${tenseNameColor(tense.name)}`}>{tense.name}</h2>
                 <p className="mt-2 rounded-lg bg-blue-50 px-3 py-2 font-mono text-xs leading-6 text-blue-900">
                   {tense.pattern}
                 </p>

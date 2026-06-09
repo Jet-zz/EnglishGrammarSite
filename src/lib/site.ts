@@ -10,6 +10,5 @@ export const navigation = [
   { name: "谓语动词", href: "/grammar/verbs" },
   { name: "句子成分", href: "/grammar/sentence-elements" },
   { name: "五大句型", href: "/grammar/sentence-patterns" },
-  { name: "时态", href: "/grammar/tenses" },
   { name: "水平测试", href: "/quiz" },
 ];
