@@ -15,7 +15,19 @@ export default function VerbsPage() {
       <SectionHeading
         eyebrow="Predicate verbs"
         title={contentVerbs.title}
-        description={contentVerbs.intro}
+        description={
+          <>
+            谓语动词是句子的引擎。它决定主语做什么、是什么、处于什么状态，同时承载时态、语态、语气。
+            <br />
+            <span className="whitespace-nowrap">
+              可以把谓语动词分成两大类：
+              <span className="font-bold text-amber-700">实义动词</span>
+              和
+              <span className="font-bold text-purple-700">非实义动词（系动词）</span>
+              。
+            </span>
+          </>
+        }
       />
 
       {/* ── 对比总览：实义动词 vs 系动词 ── */}
