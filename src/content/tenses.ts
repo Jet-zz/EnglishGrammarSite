@@ -17,6 +17,7 @@ export const tenseMatrix = [
 ];
 
 export const tenses: Tense[] = [
+  // ── 第 1 组：红色 ──
   {
     name: "一般现在时",
     englishName: "Present Simple",
@@ -38,6 +39,16 @@ export const tenses: Tense[] = [
     note: "实义动词变疑问句和否定句时，用 did/didn't，后面的动词恢复原形。",
   },
   {
+    name: "一般将来时",
+    englishName: "Future Simple",
+    pattern: "主语 + will + 动词原形 / 主语 + am/is/are going to + 动词原形",
+    function: "表示将来要发生的动作、计划、预测或临时决定。",
+    positive: "I will call you tomorrow. / She is going to buy a car.",
+    negative: "I will not call you tomorrow. / She is not going to buy a car.",
+    question: "Will you call me tomorrow? / Is she going to buy a car?",
+    note: "will 后面必须接动词原形；be going to 更强调计划或较明显的趋势。",
+  },
+  {
     name: "现在进行时",
     englishName: "Present Continuous",
     pattern: "主语 + am/is/are + 动词 ing + 其他",
@@ -46,6 +57,18 @@ export const tenses: Tense[] = [
     negative: "I am not watching TV now.",
     question: "Are you studying English now?",
     note: "进行时的核心是 be + doing，be 会随着主语变化。",
+  },
+
+  // ── 第 2 组：黄色 ──
+  {
+    name: "过去将来时",
+    englishName: "Past Future Simple",
+    pattern: "主语 + would + 动词原形",
+    function: "表示从过去某个时间点看将来要发生的事情。",
+    positive: "He said he would come.",
+    negative: "He said he would not come.",
+    question: "Would he come?",
+    note: "常见于宾语从句中，主句用过去时，从句用过去将来时。",
   },
   {
     name: "过去进行时",
@@ -58,16 +81,6 @@ export const tenses: Tense[] = [
     note: "常和 when、while 或明确的过去时间点一起使用。",
   },
   {
-    name: "一般将来时",
-    englishName: "Future Simple",
-    pattern: "主语 + will + 动词原形 / 主语 + am/is/are going to + 动词原形",
-    function: "表示将来要发生的动作、计划、预测或临时决定。",
-    positive: "I will call you tomorrow. / She is going to buy a car.",
-    negative: "I will not call you tomorrow. / She is not going to buy a car.",
-    question: "Will you call me tomorrow? / Is she going to buy a car?",
-    note: "will 后面必须接动词原形；be going to 更强调计划或较明显的趋势。",
-  },
-  {
     name: "现在完成时",
     englishName: "Present Perfect",
     pattern: "主语 + have/has + 过去分词 + 其他",
@@ -75,7 +88,7 @@ export const tenses: Tense[] = [
     positive: "I have finished my homework.",
     negative: "I have not finished my homework.",
     question: "Have you finished your homework?",
-    note: "它关注“现在的结果或影响”，不是单纯讲过去某个时间。",
+    note: "它关注「现在的结果或影响」，不是单纯讲过去某个时间。",
   },
   {
     name: "过去完成时",
@@ -85,8 +98,10 @@ export const tenses: Tense[] = [
     positive: "I had finished the work before he came.",
     negative: "I had not finished the work before he came.",
     question: "Had you finished the work before he came?",
-    note: "可以理解为“过去的过去”。",
+    note: "可以理解为「过去的过去」。",
   },
+
+  // ── 第 3 组：绿色 ──
   {
     name: "将来进行时",
     englishName: "Future Continuous",
@@ -116,5 +131,57 @@ export const tenses: Tense[] = [
     negative: "I have not been learning English for two years.",
     question: "Have you been learning English for two years?",
     note: "它强调动作的持续过程，而不仅仅是结果。",
+  },
+
+  // ── 第 4 组：黑色 ──
+  {
+    name: "过去将来进行时",
+    englishName: "Past Future Continuous",
+    pattern: "主语 + would be + 动词 ing + 其他",
+    function: "表示从过去看将来某个时刻正在进行的动作。",
+    positive: "He said he would be working at 8 p.m.",
+    negative: "He said he would not be working at 8 p.m.",
+    question: "Would he be working at 8 p.m.?",
+    note: "很少使用，多出现在间接引语中。",
+  },
+  {
+    name: "过去将来完成时",
+    englishName: "Past Future Perfect",
+    pattern: "主语 + would have + 过去分词 + 其他",
+    function: "表示从过去看将来某个时间之前已完成的动作。",
+    positive: "He said he would have finished by Monday.",
+    negative: "He said he would not have finished by Monday.",
+    question: "Would he have finished by Monday?",
+    note: "常用于虚拟语气和间接引语中。",
+  },
+  {
+    name: "过去完成进行时",
+    englishName: "Past Perfect Continuous",
+    pattern: "主语 + had been + 动词 ing + 其他",
+    function: "表示过去某个时间之前一直持续进行的动作。",
+    positive: "I had been waiting for two hours before he arrived.",
+    negative: "I had not been waiting long.",
+    question: "Had you been waiting long?",
+    note: "强调过去动作的持续性，常和 for + 时间段连用。",
+  },
+  {
+    name: "将来完成进行时",
+    englishName: "Future Perfect Continuous",
+    pattern: "主语 + will have been + 动词 ing + 其他",
+    function: "表示到将来某个时间为止，动作已持续了多久。",
+    positive: "By June, I will have been studying here for a year.",
+    negative: "I will not have been studying here that long.",
+    question: "Will you have been studying here for a year by June?",
+    note: "极为少用，强调将来某时间点之前的持续过程。",
+  },
+  {
+    name: "过去将来完成进行时",
+    englishName: "Past Future Perfect Continuous",
+    pattern: "主语 + would have been + 动词 ing + 其他",
+    function: "表示从过去看将来某时间之前一直持续的动作。",
+    positive: "He said that by Friday he would have been working there for a month.",
+    negative: "He said he would not have been working there that long.",
+    question: "Would he have been working there for a month by Friday?",
+    note: "极为罕见，几乎不出现在日常会话中。",
   },
 ];

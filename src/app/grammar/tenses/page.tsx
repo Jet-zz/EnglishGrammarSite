@@ -5,7 +5,7 @@ import { tenseMatrix, tenses } from "@/content/tenses";
 /** 根据时态名称返回文字颜色 */
 function tenseNameColor(name: string): string {
   const red = new Set(["一般现在时", "一般过去时", "一般将来时", "现在进行时"]);
-  const yellow = new Set(["过去进行时", "过去将来进行时", "现在完成时", "过去完成时"]);
+  const yellow = new Set(["过去将来时", "过去进行时", "现在完成时", "过去完成时"]);
   const green = new Set(["将来进行时", "将来完成时", "现在完成进行时"]);
   if (red.has(name)) return "text-red-600";
   if (yellow.has(name)) return "text-yellow-600";
@@ -17,8 +17,8 @@ function tenseNameColor(name: string): string {
 function cellColor(time: string, aspect: string): string {
   const key = `${time}-${aspect}`;
   const red = new Set(["现在-一般", "现在-进行", "过去-一般", "将来-一般"]);
-  const yellow = new Set(["现在-完成", "过去-进行", "过去-完成", "过去将来-一般"]);
-  const green = new Set(["现在-完成进行", "将来-进行", "将来-完成"]);
+  const yellow = new Set(["过去将来-一般", "过去-进行", "现在-完成", "过去-完成"]);
+  const green = new Set(["将来-进行", "将来-完成", "现在-完成进行"]);
   if (red.has(key)) return "text-red-600 font-semibold";
   if (yellow.has(key)) return "text-yellow-600 font-semibold";
   if (green.has(key)) return "text-green-600 font-semibold";
