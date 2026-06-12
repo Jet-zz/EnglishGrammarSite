@@ -22,7 +22,7 @@ export const tenses: Tense[] = [
     name: "一般现在时",
     englishName: "Present Simple",
     pattern: "主语 + am/is/are + 其他\n主语 + 动词原形/单三形式 + 其他",
-    function: "表示经常发生的事情、习惯、规律或客观事实。",
+    function: "功能：经常发生的事情或对客观事实的描述。",
     positive: "She loves music. / She is a teacher.",
     negative: "She doesn't love music. / She is not a teacher.",
     question: "Does she love music? / Is she a teacher?",
