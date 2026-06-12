@@ -67,9 +67,11 @@ export default function TensesPage() {
             <div className="flex items-start gap-4">
               <div className="w-72 shrink-0">
                 <h2 className={`text-lg font-bold ${tenseNameColor(tense.name)}`}>{tense.name}</h2>
-                <p className="mt-2 rounded-lg bg-blue-50 px-3 py-2 font-mono text-xs leading-6 text-blue-900">
-                  {tense.pattern}
-                </p>
+                <div className="mt-2 rounded-lg bg-blue-50 px-3 py-2 font-mono text-xs leading-6 text-blue-900">
+                  {tense.pattern.split('\n').map((line, i) => (
+                    <p key={i}>{line}</p>
+                  ))}
+                </div>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{tense.function}</p>
                 <p className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs leading-6 text-amber-900">
                   {tense.note}
