@@ -11,6 +11,7 @@ export type Tense = {
     colLabels: Array<{ label: string; pattern: string }>;
     body: Array<{
       sentenceType: string;
+      formulas: string[];
       examples: string[][];
     }>;
   };
@@ -42,6 +43,7 @@ export const tenses: Tense[] = [
       body: [
         {
           sentenceType: "肯定句",
+          formulas: ["主语 + am/is/are + 其他", "主语 + 动词原形/单三形式 + 其他"],
           examples: [
             ["I am your friend.", "She is my sister."],
             ["She loves music.", "They play football."],
@@ -49,6 +51,7 @@ export const tenses: Tense[] = [
         },
         {
           sentenceType: "否定句",
+          formulas: ["主语 + am/is/are + not + 其他", "主语 + don't/doesn't + 动词原形 + 其他"],
           examples: [
             ["I am not your friend.", "She is not my sister."],
             ["She doesn't love music.", "They don't play football."],
@@ -56,6 +59,7 @@ export const tenses: Tense[] = [
         },
         {
           sentenceType: "一般疑问句",
+          formulas: ["Am/Is/Are + 主语 + 其他", "Do/Does + 主语 + 动词原形 + 其他"],
           examples: [
             ["Am I your friend?", "Is she my sister?"],
             ["Does she love music?", "Do they play football?"],
@@ -63,6 +67,7 @@ export const tenses: Tense[] = [
         },
         {
           sentenceType: "特殊疑问句",
+          formulas: ["特殊疑问词 + 一般疑问句", "特殊疑问词 + 一般疑问句"],
           examples: [
             ["Who is your friend?", "What is that?"],
             ["Who loves music?", "What does she like?"],
@@ -70,6 +75,7 @@ export const tenses: Tense[] = [
         },
         {
           sentenceType: "祈使句",
+          formulas: ["Be + 其他", "动词原形 + 其他"],
           examples: [
             ["Be your friend.", "Be my sister."],
             ["Love music.", "Play football."],
