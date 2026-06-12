@@ -7,6 +7,13 @@ export type Tense = {
   negative: string;
   question: string;
   note: string;
+  sentenceTable?: {
+    colLabels: string[];
+    body: Array<{
+      sentenceType: string;
+      examples: string[][];
+    }>;
+  };
 };
 
 export const tenseMatrix = [
@@ -27,6 +34,46 @@ export const tenses: Tense[] = [
     negative: "She doesn't love music. / She is not a teacher.",
     question: "Does she love music? / Is she a teacher?",
     note: "be动词 和 实义动词属于冤家路窄，句子里永远只能出现一个。\n主语是第三人称单数时，实义动词记得加 s。",
+    sentenceTable: {
+      colLabels: ["am/is/are（be 动词）", "动词原形/单三形式（实义动词）"],
+      body: [
+        {
+          sentenceType: "肯定句",
+          examples: [
+            ["I am your friend.", "She is my sister."],
+            ["She loves music.", "They play football."],
+          ],
+        },
+        {
+          sentenceType: "否定句",
+          examples: [
+            ["I am not your friend.", "She is not my sister."],
+            ["She doesn't love music.", "They don't play football."],
+          ],
+        },
+        {
+          sentenceType: "一般疑问句",
+          examples: [
+            ["Am I your friend?", "Is she my sister?"],
+            ["Does she love music?", "Do they play football?"],
+          ],
+        },
+        {
+          sentenceType: "特殊疑问句",
+          examples: [
+            ["Who is your friend?", "What is that?"],
+            ["Who loves music?", "What does she like?"],
+          ],
+        },
+        {
+          sentenceType: "祈使句",
+          examples: [
+            ["Be your friend.", "Be my sister."],
+            ["Love music.", "Play football."],
+          ],
+        },
+      ],
+    },
   },
   {
     name: "一般过去时",

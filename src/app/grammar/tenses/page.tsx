@@ -64,33 +64,79 @@ export default function TensesPage() {
       <div className="mt-6 grid gap-3">
         {tenses.map((tense) => (
           <section key={tense.name} className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-            <div className="flex items-start gap-4">
-              <div className="w-72 shrink-0">
+            {tense.sentenceTable ? (
+              /* ── 双栏表格布局（be动词 vs 实义动词）── */
+              <div className="w-full">
                 <h2 className={`text-lg font-bold ${tenseNameColor(tense.name)}`}>{tense.name}</h2>
-                <div className="mt-2 rounded-lg bg-blue-50 px-3 py-2 font-mono text-xs leading-6 text-blue-900">
-                  {tense.pattern.split('\n').map((line, i) => (
-                    <p key={i}>{line}</p>
-                  ))}
+                <div className="mt-1 text-sm leading-6 text-slate-600">{tense.function}</div>
+
+                <div className="mt-3 overflow-x-auto">
+                  <table className="w-full min-w-[500px] text-left text-xs">
+                    <thead>
+                      <tr className="border-b border-slate-200">
+                        <th className="px-3 py-2 w-16 text-slate-400 font-semibold"></th>
+                        {tense.sentenceTable.colLabels.map((label) => (
+                          <th key={label} className="px-3 py-2 font-semibold text-blue-700 whitespace-nowrap">
+                            {label}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {tense.sentenceTable.body.map((row) => (
+                        <tr key={row.sentenceType} className="border-b border-slate-100 last:border-0">
+                          <td className="px-3 py-2.5 font-semibold text-slate-600 align-top whitespace-nowrap">
+                            {row.sentenceType}
+                          </td>
+                          {row.examples.map((col, ci) => (
+                            <td key={ci} className="px-3 py-2.5 align-top">
+                              {col.map((ex, ei) => (
+                                <span key={ei} className="block font-mono text-slate-700 leading-6">{ex}</span>
+                              ))}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{tense.function}</p>
-                <div className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs leading-6 text-amber-900">
+
+                <div className="mt-3 rounded-lg bg-amber-50 px-3 py-2 text-xs leading-6 text-amber-900">
                   {tense.note.split('\n').map((line, i) => (
                     <p key={i}>{line}</p>
                   ))}
                 </div>
               </div>
-              <div className="flex flex-1 gap-3">
-                <div className="flex-1">
-                  <ExampleBlock english={tense.positive} chinese="肯定句" />
+            ) : (
+              /* ── 旧布局（其他时态）── */
+              <div className="flex items-start gap-4">
+                <div className="w-72 shrink-0">
+                  <h2 className={`text-lg font-bold ${tenseNameColor(tense.name)}`}>{tense.name}</h2>
+                  <div className="mt-2 rounded-lg bg-blue-50 px-3 py-2 font-mono text-xs leading-6 text-blue-900">
+                    {tense.pattern.split('\n').map((line, i) => (
+                      <p key={i}>{line}</p>
+                    ))}
+                  </div>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">{tense.function}</p>
+                  <div className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs leading-6 text-amber-900">
+                    {tense.note.split('\n').map((line, i) => (
+                      <p key={i}>{line}</p>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <ExampleBlock english={tense.negative} chinese="否定句" />
-                </div>
-                <div className="flex-1">
-                  <ExampleBlock english={tense.question} chinese="一般疑问句" />
+                <div className="flex flex-1 gap-3">
+                  <div className="flex-1">
+                    <ExampleBlock english={tense.positive} chinese="肯定句" />
+                  </div>
+                  <div className="flex-1">
+                    <ExampleBlock english={tense.negative} chinese="否定句" />
+                  </div>
+                  <div className="flex-1">
+                    <ExampleBlock english={tense.question} chinese="一般疑问句" />
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </section>
         ))}
       </div>
