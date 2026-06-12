@@ -76,9 +76,11 @@ export default function TensesPage() {
                       <tr className="border-b border-slate-200">
                         <th className="px-3 py-2 w-28 text-slate-400 font-semibold"></th>
                         {tense.sentenceTable.colLabels.map((col) => (
-                          <th key={col.label} className="px-3 py-2 whitespace-nowrap text-center">
-                            <div className="text-sm font-bold text-blue-700">{col.label}</div>
-                            <div className="text-xs text-slate-400">公式</div>
+                          <th key={col.label} className="px-3 py-2 whitespace-nowrap">
+                            <div className="flex items-center justify-between gap-4">
+                              <span className="text-sm font-bold text-blue-700">{col.label}</span>
+                              <span className="text-xs text-slate-400">公式</span>
+                            </div>
                           </th>
                         ))}
                       </tr>
