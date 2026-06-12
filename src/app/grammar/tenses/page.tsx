@@ -79,7 +79,7 @@ export default function TensesPage() {
                           <th key={col.label} className="px-3 py-2 whitespace-nowrap">
                             <div className="flex items-center justify-between gap-4">
                               <span className="text-sm font-bold text-blue-700">{col.label}</span>
-                              <span className="text-xs text-slate-400">公式</span>
+                              <span className="text-xs text-slate-950">公式</span>
                             </div>
                           </th>
                         ))}
@@ -99,7 +99,7 @@ export default function TensesPage() {
                                     <span key={ei} className="block">{ex}</span>
                                   ))}
                                 </div>
-                                <div className="shrink-0 font-mono text-xs leading-6 text-slate-400 whitespace-nowrap">
+                                <div className="shrink-0 font-mono text-xs leading-6 text-slate-950 whitespace-nowrap">
                                   {row.formulas[ci]}
                                 </div>
                               </div>
