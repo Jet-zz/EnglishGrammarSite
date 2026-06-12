@@ -26,7 +26,7 @@ export const tenses: Tense[] = [
     positive: "She loves music. / She is a teacher.",
     negative: "She doesn't love music. / She is not a teacher.",
     question: "Does she love music? / Is she a teacher?",
-    note: "be 动词和实义动词通常不要同时做谓语；主语是第三人称单数时，实义动词要用三单形式。",
+    note: "be动词 和 实义动词属于冤家路窄，句子里永远只能出现一个。主语是第三人称单数时，实义动词记得加 s。",
   },
   {
     name: "一般过去时",
