@@ -73,9 +73,11 @@ export default function TensesPage() {
                   ))}
                 </div>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{tense.function}</p>
-                <p className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs leading-6 text-amber-900">
-                  {tense.note}
-                </p>
+                <div className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs leading-6 text-amber-900">
+                  {tense.note.split('\n').map((line, i) => (
+                    <p key={i}>{line}</p>
+                  ))}
+                </div>
               </div>
               <div className="flex flex-1 gap-3">
                 <div className="flex-1">
