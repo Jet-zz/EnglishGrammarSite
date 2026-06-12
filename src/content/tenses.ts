@@ -8,7 +8,7 @@ export type Tense = {
   question: string;
   note: string;
   sentenceTable?: {
-    colLabels: string[];
+    colLabels: Array<{ label: string; pattern: string }>;
     body: Array<{
       sentenceType: string;
       examples: string[][];
@@ -35,7 +35,10 @@ export const tenses: Tense[] = [
     question: "Does she love music? / Is she a teacher?",
     note: "be动词 和 实义动词属于冤家路窄，句子里永远只能出现一个。\n主语是第三人称单数时，实义动词记得加 s。",
     sentenceTable: {
-      colLabels: ["am/is/are（be 动词）", "动词原形/单三形式（实义动词）"],
+      colLabels: [
+        { label: "am / is / are（be 动词）", pattern: "主语 + am/is/are + 其他" },
+        { label: "动词原形 / 单三形式（实义动词）", pattern: "主语 + 动词原形/单三形式 + 其他" },
+      ],
       body: [
         {
           sentenceType: "肯定句",
