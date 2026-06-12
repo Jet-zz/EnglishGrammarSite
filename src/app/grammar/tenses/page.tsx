@@ -74,13 +74,10 @@ export default function TensesPage() {
                   <table className="w-full min-w-[500px] text-left text-xs">
                     <thead>
                       <tr className="border-b border-slate-200">
-                        <th className="px-3 py-2 w-16 text-slate-400 font-semibold"></th>
-                        {tense.sentenceTable.colLabels.map((col) => (
-                          <th key={col.label} className="px-3 py-2 whitespace-nowrap">
-                            <div className="text-sm font-bold text-blue-700">{col.label}</div>
-                            <div className="mt-1 rounded bg-blue-50 px-2 py-1 font-mono text-xs leading-5 text-blue-600">
-                              {col.pattern}
-                            </div>
+                        <th className="px-3 py-2 w-28 text-slate-400 font-semibold"></th>
+                        {tense.sentenceTable.colLabels.map((label) => (
+                          <th key={label} className="px-3 py-2 text-sm font-bold text-blue-700 whitespace-nowrap">
+                            {label}
                           </th>
                         ))}
                       </tr>
@@ -88,8 +85,13 @@ export default function TensesPage() {
                     <tbody>
                       {tense.sentenceTable.body.map((row) => (
                         <tr key={row.sentenceType} className="border-b border-slate-100 last:border-0">
-                          <td className="px-3 py-2.5 font-semibold text-slate-600 align-top whitespace-nowrap">
-                            {row.sentenceType}
+                          <td className="px-3 py-2.5 align-top whitespace-nowrap">
+                            <div className="font-semibold text-slate-700">{row.sentenceType}</div>
+                            {row.formulas.map((f, fi) => (
+                              <div key={fi} className="mt-1 rounded bg-blue-50 px-1.5 py-0.5 font-mono text-xs leading-5 text-blue-600">
+                                {f}
+                              </div>
+                            ))}
                           </td>
                           {row.examples.map((col, ci) => (
                             <td key={ci} className="px-3 py-2.5 align-top">
