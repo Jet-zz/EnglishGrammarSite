@@ -66,8 +66,7 @@ export default function TensesPage() {
           <section key={tense.name} className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
             <div className="flex items-start gap-4">
               <div className="w-72 shrink-0">
-                <p className="text-xs font-semibold text-blue-600">{tense.englishName}</p>
-                <h2 className={`mt-1 text-lg font-bold ${tenseNameColor(tense.name)}`}>{tense.name}</h2>
+                <h2 className={`text-lg font-bold ${tenseNameColor(tense.name)}`}>{tense.name}</h2>
                 <p className="mt-2 rounded-lg bg-blue-50 px-3 py-2 font-mono text-xs leading-6 text-blue-900">
                   {tense.pattern}
                 </p>
