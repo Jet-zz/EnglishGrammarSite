@@ -2,7 +2,31 @@ import { ExampleBlock } from "@/components/ExampleBlock";
 import { SectionHeading } from "@/components/SectionHeading";
 import { tenseMatrix, tenses } from "@/content/tenses";
 
-/** 根据时态名称返回文字颜色 */
+/** 对文本中指定关键词标红 */
+function HighlightText({ text, words }: { text: string; words: string[] }) {
+  if (!words.length) return <>{text}</>;
+  const pattern = words.map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+  const regex = new RegExp(`(${pattern})`, 'g');
+  const parts = text.split(regex);
+  return (
+    <>
+      {parts.map((part, i) =>
+        words.includes(part)
+          ? <span key={i} className="text-red-600 font-semibold">{part}</span>
+          : <>{part}</>
+      )}
+    </>
+  );
+}
+
+/** be 动词列各句式的关键词高亮配置 */
+const beHighlights: Record<string, { words: string[]; formulaWords: string[] }> = {
+  "肯定句":     { words: ["am", "is"], formulaWords: ["am/is/are"] },
+  "否定句":     { words: ["am not", "is not"], formulaWords: ["am/is/are", "not"] },
+  "一般疑问句":  { words: ["Am", "Is"], formulaWords: ["Am/Is/Are"] },
+  "特殊疑问句":  { words: ["Who", "What"], formulaWords: ["特殊疑问词"] },
+  "祈使句":     { words: ["Be"], formulaWords: ["Be"] },
+};
 function tenseNameColor(name: string): string {
   const red = new Set(["一般现在时", "一般过去时", "一般将来时", "现在进行时"]);
   const yellow = new Set(["过去将来时", "过去进行时", "现在完成时", "过去完成时"]);
@@ -96,11 +120,17 @@ export default function TensesPage() {
                               <div className="flex items-center justify-between gap-4">
                                 <div className="font-mono text-slate-700 leading-6">
                                   {col.map((ex, ei) => (
-                                    <span key={ei} className="block">{ex}</span>
+                                    <span key={ei} className="block">
+                                      {ci === 0
+                                        ? <HighlightText text={ex} words={beHighlights[row.sentenceType]?.words ?? []} />
+                                        : ex}
+                                    </span>
                                   ))}
                                 </div>
                                 <div className="shrink-0 font-mono text-xs leading-6 text-slate-950 whitespace-nowrap">
-                                  {row.formulas[ci]}
+                                  {ci === 0
+                                    ? <HighlightText text={row.formulas[ci]} words={beHighlights[row.sentenceType]?.formulaWords ?? []} />
+                                    : row.formulas[ci]}
                                 </div>
                               </div>
                             </td>
