@@ -5,7 +5,7 @@ import { tenseMatrix, tenses } from "@/content/tenses";
 /** 对文本中指定关键词标红 */
 function HighlightText({ text, words }: { text: string; words: string[] }) {
   if (!words.length) return <>{text}</>;
-  const pattern = words.map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+  const pattern = words.map(w => `\\b${w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`).join('|');
   const regex = new RegExp(`(${pattern})`, 'g');
   const parts = text.split(regex);
   return (
