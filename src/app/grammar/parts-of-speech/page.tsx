@@ -31,7 +31,7 @@ export default function PartsOfSpeechPage() {
               </div>
               {item.linkTo ? (
                 <p className="mt-3 text-xs font-medium text-blue-500 group-hover:text-blue-700">
-                  点击了解谓语动词详解 →
+                  点击查看不规则动词表 →
                 </p>
               ) : null}
             </div>

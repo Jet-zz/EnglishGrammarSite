@@ -24,7 +24,7 @@ export const partsOfSpeech: PartOfSpeech[] = [
     examples: ["run", "eat", "be", "have"],
     sentence: "She runs every morning.",
     note: "动词进入句子后，常常承担谓语的核心。",
-    linkTo: "/grammar/verbs",
+    linkTo: "/grammar/irregular-verbs",
   },
   {
     name: "形容词",

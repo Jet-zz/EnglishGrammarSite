@@ -46,7 +46,7 @@ export const tenses: Tense[] = [
           formulas: ["主语 + am/is/are + 其他", "主语 + 动词原形/单三形式 + 其他"],
           examples: [
             ["I am your friend.", "She is my sister."],
-            ["She loves music.", "They play football."],
+            ["You love me.", "She loves me."],
           ],
         },
         {
@@ -54,7 +54,7 @@ export const tenses: Tense[] = [
           formulas: ["主语 + am/is/are + not + 其他", "主语 + don't/doesn't + 动词原形 + 其他"],
           examples: [
             ["I am not your friend.", "She is not my sister."],
-            ["She doesn't love music.", "They don't play football."],
+            ["You don't love me.", "He doesn't love me."],
           ],
         },
         {
@@ -62,7 +62,7 @@ export const tenses: Tense[] = [
           formulas: ["Am/Is/Are + 主语 + 其他", "Do/Does + 主语 + 动词原形 + 其他"],
           examples: [
             ["Am I your friend?", "Is she my sister?"],
-            ["Does she love music?", "Do they play football?"],
+            ["Do you love me?", "Does he love me?"],
           ],
         },
         {
@@ -70,7 +70,7 @@ export const tenses: Tense[] = [
           formulas: ["特殊疑问词 + 一般疑问句", "特殊疑问词 + 一般疑问句"],
           examples: [
             ["Who is your friend?", "What is that?"],
-            ["Who loves music?", "What does she like?"],
+            ["Who do you love?", "Who does he love?"],
           ],
         },
         {
@@ -78,7 +78,7 @@ export const tenses: Tense[] = [
           formulas: ["Be + 其他", "动词原形 + 其他"],
           examples: [
             ["Be your friend.", "Be my sister."],
-            ["Love music.", "Play football."],
+            ["Love me.", "Come in."],
           ],
         },
       ],
@@ -87,12 +87,60 @@ export const tenses: Tense[] = [
   {
     name: "一般过去时",
     englishName: "Past Simple",
-    pattern: "主语 + was/were 或 动词过去式 + 其他",
-    function: "表示过去发生并已经结束的动作或状态。",
+    pattern: "主语 + was/were + 其他\n主语 + 动词过去式 + 其他",
+    function: "功能：现在的之前发生的动作（动作完成）。",
     positive: "I visited Beijing last year. / He was tired yesterday.",
     negative: "I didn't visit Beijing last year. / He was not tired yesterday.",
     question: "Did you visit Beijing last year? / Was he tired yesterday?",
     note: "实义动词变疑问句和否定句时，用 did/didn't，后面的动词恢复原形。",
+    sentenceTable: {
+      colLabels: [
+        { label: "was / were（be 动词）", pattern: "主语 + was/were + 其他" },
+        { label: "动词的过去式（实义动词）", pattern: "主语 + 动词过去式 + 其他" },
+      ],
+      body: [
+        {
+          sentenceType: "肯定句",
+          formulas: ["主语 + was/were + 其他", "主语 + 动词过去式 + 其他"],
+          examples: [
+            ["I am your friend.", "I was your friend."],
+            ["You play game.", "You played game."],
+          ],
+        },
+        {
+          sentenceType: "否定句",
+          formulas: ["主语 + was/were + not + 其他", "主语 + didn't + 动词原形 + 其他"],
+          examples: [
+            ["I am not your friend.", "I was not your friend."],
+            ["You don't love me.", "You didn't love me."],
+          ],
+        },
+        {
+          sentenceType: "一般疑问句",
+          formulas: ["Was/Were + 主语 + 其他", "Did + 主语 + 动词原形 + 其他"],
+          examples: [
+            ["Are you my friend?", "Were you my friend?"],
+            ["Do you love me?", "Did you love me?"],
+          ],
+        },
+        {
+          sentenceType: "特殊疑问句",
+          formulas: ["特殊疑问词 + 一般疑问句", "特殊疑问词 + 一般疑问句"],
+          examples: [
+            ["Who is your friend?", "Who was your friend?"],
+            ["Who do you love?", "Who did you love?"],
+          ],
+        },
+        {
+          sentenceType: "祈使句",
+          formulas: ["Be + 其他", "动词原形 + 其他"],
+          examples: [
+            ["", "Be your friend."],
+            ["", ""],
+          ],
+        },
+      ],
+    },
   },
   {
     name: "一般将来时",
