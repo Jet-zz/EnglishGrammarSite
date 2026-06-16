@@ -224,10 +224,13 @@ export default function TensesPage() {
   const [activeTense, setActiveTense] = useState(tenses[0]?.name ?? "");
   const observerRef = useRef<IntersectionObserver | null>(null);
   const sectionRefs = useRef<Map<string, HTMLElement>>(new Map());
+  const stickyTableRef = useRef<HTMLDivElement>(null);
+  const scrollingLock = useRef(false);
 
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
       (entries) => {
+        if (scrollingLock.current) return;
         const visible = entries
           .filter(e => e.isIntersecting)
           .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
@@ -254,9 +257,30 @@ export default function TensesPage() {
 
   const scrollToTense = useCallback((name: string) => {
     const el = sectionRefs.current.get(name);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    const sticky = stickyTableRef.current;
+    if (el && sticky) {
+      scrollingLock.current = true;
       setActiveTense(name);
+      const stickyH = sticky.getBoundingClientRect().height;
+      const elOffset = el.getBoundingClientRect().top + window.scrollY;
+      const target = elOffset - (72 + stickyH + 12);
+      window.scrollTo({ top: target, behavior: "smooth" });
+
+      // 滚动结束后解锁 observer（监听 scroll 静默 300ms）
+      let idleTimer: ReturnType<typeof setTimeout>;
+      const onScroll = () => {
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(() => {
+          window.removeEventListener("scroll", onScroll);
+          scrollingLock.current = false;
+        }, 300);
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      // 兜底：2s 后强制解锁
+      setTimeout(() => {
+        window.removeEventListener("scroll", onScroll);
+        scrollingLock.current = false;
+      }, 2000);
     }
   }, []);
 
@@ -289,8 +313,8 @@ export default function TensesPage() {
 
       {/* ── 右侧内容 ── */}
       <div className="min-w-0 flex-1">
-        {/* 粘性 4x4 表格：top-[72px] 紧贴标题栏底部，z-40 低于标题栏的 z-50 */}
-        <div className="sticky top-[72px] z-40 -mx-4 px-4 pb-4 bg-[#f8f9fb] lg:-mx-8 lg:px-8">
+        {/* 粘性 4x4 表格：top-[72px] 紧贴标题栏底部 */}
+        <div ref={stickyTableRef} className="sticky top-[72px] z-40 -mx-4 px-4 bg-[#f8f9fb] lg:-mx-8 lg:px-8">
           <div className="rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full min-w-[640px] text-left text-xs">
@@ -320,7 +344,7 @@ export default function TensesPage() {
         </div>
 
         {/* 时态详情 */}
-        <div className="mt-4 grid gap-3">
+        <div className="grid gap-3" style={{ marginTop: 16 }}>
           {tenses.map((tense) => (
             <section
               key={tense.name}
