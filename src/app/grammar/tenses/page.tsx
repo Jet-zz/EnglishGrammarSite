@@ -1,7 +1,6 @@
 "use client";
 
 import { ExampleBlock } from "@/components/ExampleBlock";
-import { SectionHeading } from "@/components/SectionHeading";
 import { tenseMatrix, tenses } from "@/content/tenses";
 import { useEffect, useState, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
@@ -111,7 +110,6 @@ function HoverSpan({
 }) {
   const c = color === "blue" ? "text-blue-600 border-blue-400" : color === "gray" ? "text-slate-500 border-slate-400" : "text-red-600 border-red-400";
   const [rect, setRect] = useState<DOMRect | null>(null);
-
   return (
     <>
       <span
@@ -212,15 +210,12 @@ function cellColor(time: string, aspect: string): string {
   return "text-slate-500";
 }
 
-/* ── 左侧导航高亮颜色 ── */
-const tenseNavColorMap: Record<string, string> = {
-  "text-red-600":    "bg-red-50 border-red-400 text-red-600",
-  "text-yellow-600": "bg-yellow-50 border-yellow-400 text-yellow-600",
-  "text-green-600":  "bg-green-50 border-green-400 text-green-600",
-  "text-slate-950":  "bg-slate-100 border-slate-500 text-slate-950",
-};
 function tenseNavActiveClass(name: string): string {
-  return tenseNavColorMap[tenseNameColor(name)] ?? "bg-slate-100 border-slate-500 text-slate-950";
+  const c = tenseNameColor(name);
+  if (c === "text-red-600") return "text-red-600 font-bold";
+  if (c === "text-yellow-600") return "text-yellow-600 font-bold";
+  if (c === "text-green-600") return "text-green-600 font-bold";
+  return "text-slate-950 font-bold";
 }
 
 /* ── 页面 ── */
@@ -230,11 +225,9 @@ export default function TensesPage() {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const sectionRefs = useRef<Map<string, HTMLElement>>(new Map());
 
-  // IntersectionObserver 检测哪个时态在视口中心附近
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
       (entries) => {
-        // 找最接近视口顶部的可见 section
         const visible = entries
           .filter(e => e.isIntersecting)
           .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
@@ -245,14 +238,10 @@ export default function TensesPage() {
       { rootMargin: "-30% 0px -60% 0px" }
     );
 
-    sectionRefs.current.forEach((el) => {
-      observerRef.current?.observe(el);
-    });
-
+    sectionRefs.current.forEach((el) => observerRef.current?.observe(el));
     return () => observerRef.current?.disconnect();
   }, []);
 
-  // 重新 observe 当 DOM 更新后
   useEffect(() => {
     const obs = observerRef.current;
     if (!obs) return;
@@ -266,84 +255,78 @@ export default function TensesPage() {
   const scrollToTense = useCallback((name: string) => {
     const el = sectionRefs.current.get(name);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
       setActiveTense(name);
     }
   }, []);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-8 lg:px-8">
-      <SectionHeading
-        eyebrow="Tenses"
-        title="英语时态总览"
-        description={'可以把时态理解为"时间 + 动作状态"：现在、过去、将来、过去将来，加上一般、进行、完成、完成进行。'}
-      />
-
-      {/* ── 总览表格 ── */}
-      <section className="mt-6 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[640px] text-left text-xs">
-            <thead className="bg-slate-950 text-white">
-              <tr>
-                <th className="px-3 py-2.5">时间</th>
-                <th className="px-3 py-2.5">一般</th>
-                <th className="px-3 py-2.5">进行</th>
-                <th className="px-3 py-2.5">完成</th>
-                <th className="px-3 py-2.5">完成进行</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              {tenseMatrix.map((row) => (
-                <tr key={row.time}>
-                  <th className="bg-slate-50 px-3 py-2.5 font-semibold text-slate-950">{row.time}</th>
-                  <td className={`px-3 py-2.5 font-mono text-xs ${cellColor(row.time, "一般")}`}>{row.simple}</td>
-                  <td className={`px-3 py-2.5 font-mono text-xs ${cellColor(row.time, "进行")}`}>{row.continuous}</td>
-                  <td className={`px-3 py-2.5 font-mono text-xs ${cellColor(row.time, "完成")}`}>{row.perfect}</td>
-                  <td className={`px-3 py-2.5 font-mono text-xs ${cellColor(row.time, "完成进行")}`}>{row.perfectContinuous}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+    <div className="mx-auto flex max-w-[90rem] gap-8 px-4 lg:px-8">
+      {/* ── 左侧导航 ── */}
+      <nav className="hidden lg:block w-36 shrink-0">
+        <div className="sticky top-[calc(50vh-16rem)]">
+          <div className="text-sm font-bold text-slate-400 mb-2">时态总览</div>
+          <div className="space-y-1">
+            {tenses.map((tense) => {
+              const isActive = activeTense === tense.name;
+              return (
+                <button
+                  key={tense.name}
+                  onClick={() => scrollToTense(tense.name)}
+                  className={`block w-full text-left py-1 text-xs leading-relaxed transition ${
+                    isActive
+                      ? tenseNavActiveClass(tense.name)
+                      : "text-slate-400 hover:text-slate-600"
+                  }`}
+                >
+                  {tense.name}
+                </button>
+              );
+            })}
+          </div>
         </div>
-      </section>
+      </nav>
 
-      {/* ── 主体：左侧导航 + 右侧时态详情 ── */}
-      <div className="mt-8 flex gap-6">
-        {/* 左侧导航 */}
-        <nav className="hidden lg:block w-44 shrink-0">
-          <div className="sticky top-8 rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
-            <div className="bg-slate-950 px-4 py-3 text-sm font-bold text-white">
-              时态总览
-            </div>
-            <div className="divide-y divide-slate-50 max-h-[calc(100vh-6rem)] overflow-y-auto">
-              {tenses.map((tense) => {
-                const isActive = activeTense === tense.name;
-                return (
-                  <button
-                    key={tense.name}
-                    onClick={() => scrollToTense(tense.name)}
-                    className={`w-full text-left px-4 py-2.5 text-xs transition ${
-                      isActive
-                        ? `${tenseNavActiveClass(tense.name)} font-bold border-l-4`
-                        : "text-slate-600 hover:bg-slate-50 border-l-4 border-transparent"
-                    }`}
-                  >
-                    {tense.name}
-                  </button>
-                );
-              })}
+      {/* ── 右侧内容 ── */}
+      <div className="min-w-0 flex-1">
+        {/* 粘性 4x4 表格：top-[72px] 紧贴标题栏底部，z-40 低于标题栏的 z-50 */}
+        <div className="sticky top-[72px] z-40 -mx-4 px-4 pb-4 bg-[#f8f9fb] lg:-mx-8 lg:px-8">
+          <div className="rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[640px] text-left text-xs">
+                <thead className="bg-slate-950 text-white">
+                  <tr>
+                    <th className="px-3 py-2.5">时间</th>
+                    <th className="px-3 py-2.5">一般</th>
+                    <th className="px-3 py-2.5">进行</th>
+                    <th className="px-3 py-2.5">完成</th>
+                    <th className="px-3 py-2.5">完成进行</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {tenseMatrix.map((row) => (
+                    <tr key={row.time}>
+                      <th className="bg-slate-50 px-3 py-2.5 font-semibold text-slate-950">{row.time}</th>
+                      <td className={`px-3 py-2.5 font-mono text-xs ${cellColor(row.time, "一般")}`}>{row.simple}</td>
+                      <td className={`px-3 py-2.5 font-mono text-xs ${cellColor(row.time, "进行")}`}>{row.continuous}</td>
+                      <td className={`px-3 py-2.5 font-mono text-xs ${cellColor(row.time, "完成")}`}>{row.perfect}</td>
+                      <td className={`px-3 py-2.5 font-mono text-xs ${cellColor(row.time, "完成进行")}`}>{row.perfectContinuous}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
-        </nav>
+        </div>
 
-        {/* 右侧时态详情 */}
-        <div className="min-w-0 flex-1 grid gap-3">
+        {/* 时态详情 */}
+        <div className="mt-4 grid gap-3">
           {tenses.map((tense) => (
             <section
               key={tense.name}
               id={tense.name}
               ref={setRef(tense.name)}
-              className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm scroll-mt-20"
+              className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm scroll-mt-32"
             >
               {tense.sentenceTable ? (
                 <div className="w-full">
