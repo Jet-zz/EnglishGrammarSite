@@ -156,11 +156,53 @@ export const tenses: Tense[] = [
     name: "现在进行时",
     englishName: "Present Continuous",
     pattern: "主语 + am/is/are + 动词 ing + 其他",
-    function: "表示此刻正在发生的动作，或当前阶段正在进行的事情。",
+    function: "功能：当下时刻正在发生的动作。",
     positive: "I am studying English now.",
     negative: "I am not watching TV now.",
     question: "Are you studying English now?",
     note: "进行时的核心是 be + doing，be 会随着主语变化。",
+    sentenceTable: {
+      colLabels: [
+        { label: "am / is / are + 动词 ing", pattern: "主语 + am/is/are + 动词 ing + 其他" },
+      ],
+      body: [
+        {
+          sentenceType: "肯定句",
+          formulas: ["主语 + am/is/are + 动词 ing + 其他"],
+          examples: [
+            ["I am studying English now."],
+          ],
+        },
+        {
+          sentenceType: "否定句",
+          formulas: ["主语 + am/is/are + not + 动词 ing + 其他"],
+          examples: [
+            ["I am not watching TV now."],
+          ],
+        },
+        {
+          sentenceType: "一般疑问句",
+          formulas: ["Am/Is/Are + 主语 + 动词 ing + 其他"],
+          examples: [
+            ["Are you studying English now?"],
+          ],
+        },
+        {
+          sentenceType: "特殊疑问句",
+          formulas: ["特殊疑问词 + 一般疑问句"],
+          examples: [
+            ["What are you doing now?"],
+          ],
+        },
+        {
+          sentenceType: "祈使句",
+          formulas: ["—"],
+          examples: [
+            ["—"],
+          ],
+        },
+      ],
+    },
   },
 
   // ── 第 2 组：黄色 ──
@@ -178,11 +220,53 @@ export const tenses: Tense[] = [
     name: "过去进行时",
     englishName: "Past Continuous",
     pattern: "主语 + was/were + 动词 ing + 其他",
-    function: "表示过去某个时刻正在发生的动作。",
+    function: "功能：过去某时刻，正在发生的动作。",
     positive: "She was reading at 8 p.m. yesterday.",
     negative: "She was not sleeping at 8 p.m. yesterday.",
     question: "Was she reading at 8 p.m. yesterday?",
     note: "常和 when、while 或明确的过去时间点一起使用。",
+    sentenceTable: {
+      colLabels: [
+        { label: "was / were + 动词 ing", pattern: "主语 + was/were + 动词 ing + 其他" },
+      ],
+      body: [
+        {
+          sentenceType: "肯定句",
+          formulas: ["主语 + was/were + 动词 ing + 其他"],
+          examples: [
+            ["She was reading at 8 p.m. yesterday."],
+          ],
+        },
+        {
+          sentenceType: "否定句",
+          formulas: ["主语 + was/were + not + 动词 ing + 其他"],
+          examples: [
+            ["She was not sleeping at 8 p.m. yesterday."],
+          ],
+        },
+        {
+          sentenceType: "一般疑问句",
+          formulas: ["Was/Were + 主语 + 动词 ing + 其他"],
+          examples: [
+            ["Was she reading at 8 p.m. yesterday?"],
+          ],
+        },
+        {
+          sentenceType: "特殊疑问句",
+          formulas: ["特殊疑问词 + 一般疑问句"],
+          examples: [
+            ["What was she doing at 8 p.m.?"],
+          ],
+        },
+        {
+          sentenceType: "祈使句",
+          formulas: ["—"],
+          examples: [
+            ["—"],
+          ],
+        },
+      ],
+    },
   },
   {
     name: "现在完成时",

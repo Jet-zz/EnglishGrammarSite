@@ -165,6 +165,14 @@ const pastBeHighlights: Record<string, { words: string[]; grayWords: string[]; f
   "祈使句":     { words: ["Be"],                  grayWords: ["Be"],               formulaWords: ["Be"] },
 };
 
+const continuousBeHighlights: Record<string, { words: string[]; formulaWords: string[] }> = {
+  "肯定句": { words: ["am", "studying"], formulaWords: ["am/is/are", "动词 ing"] },
+  "否定句": { words: ["am not", "watching"], formulaWords: ["am/is/are", "not", "动词 ing"] },
+  "一般疑问句": { words: ["Are", "studying"], formulaWords: ["Am/Is/Are", "动词 ing"] },
+  "特殊疑问句": { words: ["What", "are", "doing"], formulaWords: ["特殊疑问词"] },
+  "祈使句": { words: [], formulaWords: [] },
+};
+
 const lexicalHighlights: Record<string, { words: string[]; formulaWords: string[] }> = {
   "肯定句": { words: ["love", "loves"], formulaWords: ["动词原形/", "单三形式"] },
   "否定句": { words: ["don't", "doesn't", "love"], formulaWords: ["don't/doesn't", "动词原形"] },
@@ -181,10 +189,21 @@ const pastLexicalHighlights: Record<string, { words: string[]; grayWords: string
   "祈使句":     { words: [], grayWords: [], formulaWords: ["动词原形"] },
 };
 
+const pastContinuousBeHighlights: Record<string, { words: string[]; formulaWords: string[] }> = {
+  "肯定句": { words: ["was", "reading"], formulaWords: ["was/were", "动词 ing"] },
+  "否定句": { words: ["was not", "sleeping"], formulaWords: ["was/were", "not", "动词 ing"] },
+  "一般疑问句": { words: ["Was", "reading"], formulaWords: ["Was/Were", "动词 ing"] },
+  "特殊疑问句": { words: ["What", "was", "doing"], formulaWords: ["特殊疑问词"] },
+  "祈使句": { words: [], formulaWords: [] },
+};
+
 function getHighlights(tenseName: string, ci: number): Record<string, { words: string[]; formulaWords: string[] }> {
-  const isPast = tenseName === "一般过去时";
-  if (ci === 0) return isPast ? pastBeHighlights : beHighlights;
-  return isPast ? pastLexicalHighlights : lexicalHighlights;
+  if (tenseName === "一般过去时" && ci === 0) return pastBeHighlights;
+  if (tenseName === "一般过去时") return pastLexicalHighlights;
+  if (tenseName === "现在进行时" && ci === 0) return continuousBeHighlights;
+  if (tenseName === "过去进行时" && ci === 0) return pastContinuousBeHighlights;
+  if (ci === 0) return beHighlights;
+  return lexicalHighlights;
 }
 
 /* ── 颜色工具 ── */
@@ -314,7 +333,7 @@ export default function TensesPage() {
       {/* ── 右侧内容 ── */}
       <div className="min-w-0 flex-1">
         {/* 粘性 4x4 表格：top-[72px] 紧贴标题栏底部 */}
-        <div ref={stickyTableRef} className="sticky top-[72px] z-40 -mx-4 px-4 bg-[#f8f9fb] lg:-mx-8 lg:px-8">
+        <div ref={stickyTableRef} className="sticky top-[72px] z-40 bg-[#f8f9fb]">
           <div className="rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full min-w-[640px] text-left text-xs">
@@ -344,7 +363,7 @@ export default function TensesPage() {
         </div>
 
         {/* 时态详情 */}
-        <div className="grid gap-3" style={{ marginTop: 16 }}>
+        <div className="grid gap-3 mt-3">
           {tenses.map((tense) => (
             <section
               key={tense.name}

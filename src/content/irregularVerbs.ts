@@ -79,6 +79,73 @@ export const irregularVerbs: IrregularVerb[] = [
   { verb: "see", chinese: "看见", past: "saw" },
 ];
 
+export type PresentParticiple = {
+  verb: string;
+  participle: string;
+  chinese: string;
+};
+
+export const presentParticiples: PresentParticiple[] = [
+  { verb: "admit", participle: "admitting", chinese: "承认" },
+  { verb: "ban", participle: "banning", chinese: "禁止" },
+  { verb: "begin", participle: "beginning", chinese: "开始" },
+  { verb: "beg", participle: "begging", chinese: "乞讨" },
+  { verb: "chat", participle: "chatting", chinese: "交流" },
+  { verb: "clap", participle: "clapping", chinese: "鼓掌" },
+  { verb: "control", participle: "controlling", chinese: "控制" },
+  { verb: "cut", participle: "cutting", chinese: "切" },
+  { verb: "dip", participle: "dipping", chinese: "浸" },
+  { verb: "drag", participle: "dragging", chinese: "拖，拉" },
+  { verb: "drop", participle: "dropping", chinese: "掉落" },
+  { verb: "fan", participle: "fanning", chinese: "扇风" },
+  { verb: "fit", participle: "fitting", chinese: "修理" },
+  { verb: "forget", participle: "forgetting", chinese: "忘记" },
+  { verb: "get", participle: "getting", chinese: "获得" },
+  { verb: "hit", participle: "hitting", chinese: "打" },
+  { verb: "hug", participle: "hugging", chinese: "拥抱" },
+  { verb: "infer", participle: "inferring", chinese: "推断" },
+  { verb: "let", participle: "letting", chinese: "让" },
+  { verb: "man", participle: "manning", chinese: "操纵" },
+  { verb: "net", participle: "netting", chinese: "用网捕" },
+  { verb: "nod", participle: "nodding", chinese: "点头" },
+  { verb: "occur", participle: "occurring", chinese: "发生" },
+  { verb: "pat", participle: "patting", chinese: "轻拍" },
+  { verb: "permit", participle: "permitting", chinese: "允许" },
+  { verb: "pet", participle: "petting", chinese: "爱抚" },
+  { verb: "pin", participle: "pinning", chinese: "别住" },
+  { verb: "plan", participle: "planning", chinese: "计划" },
+  { verb: "prefer", participle: "preferring", chinese: "偏爱" },
+  { verb: "put", participle: "putting", chinese: "放置" },
+  { verb: "refer", participle: "referring", chinese: "指，谈起" },
+  { verb: "rob", participle: "robbing", chinese: "抢劫" },
+  { verb: "set", participle: "setting", chinese: "设置" },
+  { verb: "ship", participle: "shipping", chinese: "用船运送" },
+  { verb: "shop", participle: "shopping", chinese: "购物" },
+  { verb: "shut", participle: "shutting", chinese: "关闭" },
+  { verb: "sit", participle: "sitting", chinese: "坐" },
+  { verb: "skip", participle: "skipping", chinese: "遗漏" },
+  { verb: "sob", participle: "sobbing", chinese: "抽泣" },
+  { verb: "spit", participle: "spitting", chinese: "吐痰" },
+  { verb: "split", participle: "splitting", chinese: "分裂" },
+  { verb: "star", participle: "starring", chinese: "主演" },
+  { verb: "step", participle: "stepping", chinese: "踏步" },
+  { verb: "stop", participle: "stopping", chinese: "停止" },
+  { verb: "swim", participle: "swimming", chinese: "游泳" },
+  { verb: "tap", participle: "tapping", chinese: "轻敲" },
+  { verb: "top", participle: "topping", chinese: "到达顶峰" },
+  { verb: "trap", participle: "trapping", chinese: "诱捕" },
+  { verb: "wag", participle: "wagging", chinese: "摇摆" },
+  { verb: "win", participle: "winning", chinese: "赢取" },
+  { verb: "wrap", participle: "wrapping", chinese: "包起来" },
+];
+
+export const continuousExamples = [
+  { present: "I am doing my homework now.", past: "I was doing my homework at this time yesterday." },
+  { present: "We are cooking for our parents for the time being.", past: "We were cooking for our parents at that time." },
+  { present: "They are having a meeting so far.", past: "They were having a meeting when I came in." },
+  { present: "My friends are learning English these days.", past: "My friends were learning English those days." },
+];
+
 export const verbExamples = [
   "I was a child ten years old.",
   "I broke the glass yesterday.",
