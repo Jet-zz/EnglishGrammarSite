@@ -62,9 +62,18 @@ function PersonTablePopup() {
   );
 }
 
+function WillShallPopup() {
+  return (
+    <div className="rounded-lg border border-slate-300 bg-white px-3 py-2 shadow-lg text-xs whitespace-nowrap">
+      <div className="py-0.5 text-slate-700">will 没有人称限制</div>
+      <div className="py-0.5 text-slate-500">shall 仅限第一人称（I / We）</div>
+    </div>
+  );
+}
+
 /* ── Portal 弹窗 ── */
 
-type TooltipKind = "questionWords" | "personTable" | null;
+type TooltipKind = "questionWords" | "personTable" | "willShall" | null;
 
 function PortalTooltip({ kind, rect }: { kind: NonNullable<TooltipKind>; rect: DOMRect }) {
   const [adjustedLeft, setAdjustedLeft] = useState(0);
@@ -72,13 +81,17 @@ function PortalTooltip({ kind, rect }: { kind: NonNullable<TooltipKind>; rect: D
 
   useEffect(() => {
     setMounted(true);
-    const estWidth = kind === "questionWords" ? 180 : 280;
+    const estWidth = kind === "questionWords" ? 180 : kind === "willShall" ? 200 : 280;
     let left = rect.left + rect.width / 2 - estWidth / 2;
     if (left < 8) left = 8;
     setAdjustedLeft(left);
   }, [kind, rect]);
 
   if (!mounted) return null;
+
+  const popup = kind === "questionWords" ? <QuestionWordsPopup />
+    : kind === "willShall" ? <WillShallPopup />
+    : <PersonTablePopup />;
 
   return createPortal(
     <div
@@ -91,7 +104,7 @@ function PortalTooltip({ kind, rect }: { kind: NonNullable<TooltipKind>; rect: D
         pointerEvents: "none",
       }}
     >
-      {kind === "questionWords" ? <QuestionWordsPopup /> : <PersonTablePopup />}
+      {popup}
     </div>,
     document.body
   );
@@ -141,7 +154,32 @@ function HighlightText({ text, words, color }: { text: string; words: string[]; 
         if (!(part && wordSet.has(part))) return <span key={i}>{part}</span>;
         if (part === "特殊疑问词") return <HoverSpan key={i} kind="questionWords" color={color}>{part}</HoverSpan>;
         if (part === "单三形式") return <HoverSpan key={i} kind="personTable" color={color}>{part}</HoverSpan>;
+        if (part === "will/shall") return <HoverSpan key={i} kind="willShall" color={color}>{part}</HoverSpan>;
         return <span key={i} className={`${c} font-semibold`}>{part}</span>;
+      })}
+    </>
+  );
+}
+
+/** 解析 {r}...{/r} 标记染红，同时支持 \n 换行 */
+function redMark(text: string) {
+  const segs = text.split(/{r}|{\/r}/g);
+  let inRed = false;
+  return (
+    <>
+      {segs.map((seg, i) => {
+        if (seg === "") return null;
+        const isRed = inRed;
+        inRed = !inRed;
+        return (
+          <span key={i} className={isRed ? "text-red-600" : ""}>
+            {seg.includes("\n")
+              ? seg.split("\n").map((line, li) => (
+                  <span key={li} className="block">{line}</span>
+                ))
+              : seg}
+          </span>
+        );
       })}
     </>
   );
@@ -197,13 +235,73 @@ const pastContinuousBeHighlights: Record<string, { words: string[]; formulaWords
   "祈使句": { words: [], formulaWords: [] },
 };
 
+const futureBeHighlights: Record<string, { words: string[]; formulaWords: string[] }> = {
+  "肯定句": { words: ["will", "be"], formulaWords: ["will/shall", "be", "动词原形"] },
+  "否定句": { words: ["will", "not", "be"], formulaWords: ["will/shall", "not", "be", "动词原形"] },
+  "一般疑问句": { words: ["Will", "be", "do"], formulaWords: ["Will/Shall", "be", "动词原形"] },
+  "特殊疑问句": { words: ["What", "will", "be"], formulaWords: ["特殊疑问词"] },
+  "祈使句": { words: [], formulaWords: [] },
+};
+
+const futureGoingToHighlights: Record<string, { words: string[]; formulaWords: string[] }> = {
+  "肯定句": { words: ["am", "going to", "do"], formulaWords: ["am/is/are", "going to", "be", "动词原形"] },
+  "否定句": { words: ["am", "not", "going to", "do"], formulaWords: ["am/is/are", "not", "going to", "be", "动词原形"] },
+  "一般疑问句": { words: ["Are", "going to", "do"], formulaWords: ["Am/Is/Are", "going to", "be", "动词原形"] },
+  "特殊疑问句": { words: ["What", "are", "going to", "be"], formulaWords: ["特殊疑问词"] },
+  "祈使句": { words: ["Do"], formulaWords: ["动词原形"] },
+};
+
+const pastFutureBeHighlights: Record<string, { words: string[]; formulaWords: string[] }> = {
+  "肯定句": { words: [], formulaWords: ["would/should", "be", "动词原形"] },
+  "否定句": { words: [], formulaWords: ["would/should", "not", "be", "动词原形"] },
+  "一般疑问句": { words: [], formulaWords: ["Would/Should", "be", "动词原形"] },
+  "特殊疑问句": { words: [], formulaWords: ["特殊疑问词"] },
+  "祈使句": { words: [], formulaWords: [] },
+};
+
+const pastFutureGoingToHighlights: Record<string, { words: string[]; formulaWords: string[] }> = {
+  "肯定句": { words: [], formulaWords: ["was/were", "going to", "be", "动词原形"] },
+  "否定句": { words: [], formulaWords: ["was/were", "not", "going to", "be", "动词原形"] },
+  "一般疑问句": { words: [], formulaWords: ["Was/Were", "going to", "be", "动词原形"] },
+  "特殊疑问句": { words: [], formulaWords: ["特殊疑问词"] },
+  "祈使句": { words: [], formulaWords: ["动词原形"] },
+};
+
+const presentPerfectBeHighlights: Record<string, { words: string[]; formulaWords: string[] }> = {
+  "肯定句": { words: ["have", "been"], formulaWords: ["have/has", "been"] },
+  "否定句": { words: [], formulaWords: ["have/has", "not", "been"] },
+  "一般疑问句": { words: ["Has", "been"], formulaWords: ["Have/Has", "been"] },
+  "特殊疑问句": { words: [], formulaWords: ["特殊疑问词"] },
+  "祈使句": { words: [], formulaWords: [] },
+};
+
+const presentPerfectLexicalHighlights: Record<string, { words: string[]; formulaWords: string[] }> = {
+  "肯定句": { words: ["have", "done"], formulaWords: ["have/has", "动词的过去分词"] },
+  "否定句": { words: ["have", "not", "got", "has", "received"], formulaWords: ["have/has", "not", "动词的过去分词"] },
+  "一般疑问句": { words: ["Have", "done"], formulaWords: ["Have/Has", "动词的过去分词"] },
+  "特殊疑问句": { words: ["have", "done", "has", "studied"], formulaWords: ["特殊疑问词"] },
+  "祈使句": { words: [], formulaWords: [] },
+};
+
+/* 通用单列高亮（句式名 → 高亮词） */
+function genericHighlights(tenseName: string): Record<string, { words: string[]; formulaWords: string[] }> {
+  const q = { words: [], formulaWords: ["特殊疑问词"] };
+  const dash = { words: [], formulaWords: [] };
+  return { "肯定句": dash, "否定句": dash, "一般疑问句": dash, "特殊疑问句": q, "祈使句": dash };
+}
+
 function getHighlights(tenseName: string, ci: number): Record<string, { words: string[]; formulaWords: string[] }> {
   if (tenseName === "一般过去时" && ci === 0) return pastBeHighlights;
   if (tenseName === "一般过去时") return pastLexicalHighlights;
   if (tenseName === "现在进行时" && ci === 0) return continuousBeHighlights;
   if (tenseName === "过去进行时" && ci === 0) return pastContinuousBeHighlights;
-  if (ci === 0) return beHighlights;
-  return lexicalHighlights;
+  if (tenseName === "一般将来时" && ci === 0) return futureBeHighlights;
+  if (tenseName === "一般将来时") return futureGoingToHighlights;
+  if (tenseName === "过去将来时" && ci === 0) return pastFutureBeHighlights;
+  if (tenseName === "过去将来时") return pastFutureGoingToHighlights;
+  if (tenseName === "现在完成时" && ci === 0) return presentPerfectBeHighlights;
+  if (tenseName === "现在完成时") return presentPerfectLexicalHighlights;
+  return genericHighlights(tenseName);
 }
 
 /* ── 颜色工具 ── */
@@ -374,7 +472,7 @@ export default function TensesPage() {
               {tense.sentenceTable ? (
                 <div className="w-full">
                   <h2 className={`text-lg font-bold ${tenseNameColor(tense.name)}`}>{tense.name}</h2>
-                  <div className="mt-1 text-sm leading-6 text-slate-900 font-semibold">{tense.function}</div>
+                  <div className="mt-1 text-sm leading-6 text-slate-900 font-semibold">{redMark(tense.function)}</div>
 
                   <div className="mt-3 overflow-x-auto">
                     <table className="w-full min-w-[640px] text-left text-xs table-fixed">
@@ -414,15 +512,28 @@ export default function TensesPage() {
                                       const hlWords = isPast && ei === 0 && h?.grayWords ? h.grayWords : h?.words ?? [];
                                       return (
                                         <span key={ei} className={`block ${lineColor}`}>
-                                          <HighlightText text={ex} words={hlWords} color={hlColor} />
+                                          {ex.includes("\n")
+                                            ? ex.split("\n").map((line, li) => (
+                                                <span key={li} className="block">
+                                                  <HighlightText text={line} words={hlWords} color={hlColor} />
+                                                </span>
+                                              ))
+                                            : <HighlightText text={ex} words={hlWords} color={hlColor} />
+                                          }
                                         </span>
                                       );
                                     })}
                                   </div>
-                                  <div className="shrink-0 min-w-40 font-mono text-xs leading-6 text-slate-950 whitespace-nowrap text-right">
+                                  <div className="shrink-0 min-w-40 font-mono text-xs leading-6 text-slate-950 text-right">
                                     {(() => {
                                       const h = getHighlights(tense.name, ci)[row.sentenceType];
-                                      return <HighlightText text={row.formulas[ci]} words={h?.formulaWords ?? []} color={ci === 0 ? "red" : "blue"} />;
+                                      return row.formulas[ci].includes("\n")
+                                        ? row.formulas[ci].split("\n").map((line, li) => (
+                                            <div key={li}>
+                                              <HighlightText text={line} words={h?.formulaWords ?? []} color={ci === 0 ? "red" : "blue"} />
+                                            </div>
+                                          ))
+                                        : <HighlightText text={row.formulas[ci]} words={h?.formulaWords ?? []} color={ci === 0 ? "red" : "blue"} />;
                                     })()}
                                   </div>
                                 </div>
@@ -449,7 +560,7 @@ export default function TensesPage() {
                         <p key={i}>{line}</p>
                       ))}
                     </div>
-                    <p className="mt-2 text-sm leading-6 text-slate-900 font-semibold">{tense.function}</p>
+                    <p className="mt-2 text-sm leading-6 text-slate-900 font-semibold">{redMark(tense.function)}</p>
                     <div className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs leading-6 text-amber-900">
                       {tense.note.split("\n").map((line, i) => (
                         <p key={i}>{line}</p>

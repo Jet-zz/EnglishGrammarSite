@@ -5,9 +5,13 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { tenseAdverbialSections } from "@/content/timeAdverbials";
 
 const colorMap = {
-  amber:  { border: "border-amber-400", bg: "bg-amber-50",  badge: "bg-amber-100 text-amber-700", text: "text-amber-700" },
-  blue:   { border: "border-blue-400",  bg: "bg-blue-50",   badge: "bg-blue-100 text-blue-700",   text: "text-blue-700" },
+  amber:  { border: "border-amber-400",  bg: "bg-amber-50",  badge: "bg-amber-100 text-amber-700",   text: "text-amber-700" },
+  blue:   { border: "border-blue-400",   bg: "bg-blue-50",   badge: "bg-blue-100 text-blue-700",     text: "text-blue-700" },
   purple: { border: "border-purple-400", bg: "bg-purple-50", badge: "bg-purple-100 text-purple-700", text: "text-purple-700" },
+  green:  { border: "border-green-400",  bg: "bg-green-50",  badge: "bg-green-100 text-green-700",   text: "text-green-700" },
+  rose:   { border: "border-rose-400",   bg: "bg-rose-50",   badge: "bg-rose-100 text-rose-700",     text: "text-rose-700" },
+  indigo: { border: "border-indigo-400", bg: "bg-indigo-50", badge: "bg-indigo-100 text-indigo-700", text: "text-indigo-700" },
+  teal:   { border: "border-teal-400",   bg: "bg-teal-50",   badge: "bg-teal-100 text-teal-700",     text: "text-teal-700" },
 };
 
 export default function AdverbialsPage() {
@@ -52,7 +56,7 @@ export default function AdverbialsPage() {
                     <div key={group.label}>
                       <h3 className="text-sm font-semibold text-slate-700 mb-2 ml-4">{group.label}</h3>
                       <div className="grid gap-1.5">
-                        {group.items.map((item) => (
+                        {(group.items ?? group.examples ?? []).map((item) => (
                           <div
                             key={item.english}
                             className="flex items-center justify-between rounded-lg bg-slate-50 px-4 py-2"

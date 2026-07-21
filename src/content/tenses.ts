@@ -145,12 +145,54 @@ export const tenses: Tense[] = [
   {
     name: "一般将来时",
     englishName: "Future Simple",
-    pattern: "主语 + will + 动词原形 / 主语 + am/is/are going to + 动词原形",
-    function: "表示将来要发生的动作、计划、预测或临时决定。",
+    pattern: "主语 + will + 动词原形\n主语 + am/is/are going to + 动词原形",
+    function: "功能：将来要发生的动作、计划或预测。",
     positive: "I will call you tomorrow. / She is going to buy a car.",
     negative: "I will not call you tomorrow. / She is not going to buy a car.",
     question: "Will you call me tomorrow? / Is she going to buy a car?",
     note: "will 后面必须接动词原形；be going to 更强调计划或较明显的趋势。",
+    sentenceTable: {
+      colLabels: [
+        { label: "will / shall + 动词原形", pattern: "" },
+        { label: "be going to + 动词原形", pattern: "" },
+      ],
+      body: [
+        {
+          sentenceType: "肯定句",
+          formulas: [
+            "主语 + will/shall + be + 其他\n主语 + will/shall + 动词原形 + 其他",
+            "主语 + am/is/are going to + be + 其他\n主语 + am/is/are going to + 动词原形 + 其他",
+          ],
+          examples: [["I will be a teacher."], ["I am going to do the work."]],
+        },
+        {
+          sentenceType: "否定句",
+          formulas: [
+            "主语 + will/shall + not + be + 其他\n主语 + will/shall + not + 动词原形 + 其他",
+            "主语 + am/is/are + not going to + be + 其他\n主语 + am/is/are + not going to + 动词原形 + 其他",
+          ],
+          examples: [["I will not be a teacher."], ["I am not going to do the work."]],
+        },
+        {
+          sentenceType: "一般疑问句",
+          formulas: [
+            "Will/Shall + 主语 + be + 其他\nWill/Shall + 主语 + 动词原形 + 其他",
+            "Am/Is/Are + 主语 + going to + be + 其他\nAm/Is/Are + 主语 + going to + 动词原形 + 其他",
+          ],
+          examples: [["Will you be a teacher?\nWill you do the work?"], ["Are you going to do the work?"]],
+        },
+        {
+          sentenceType: "特殊疑问句",
+          formulas: ["特殊疑问词 + 一般疑问句", "特殊疑问词 + 一般疑问句"],
+          examples: [["What will you be?"], ["What are you going to be?"]],
+        },
+        {
+          sentenceType: "祈使句",
+          formulas: ["—", "动词原形 + 其他"],
+          examples: [[""], ["Do the work."]],
+        },
+      ],
+    },
   },
   {
     name: "现在进行时",
@@ -209,12 +251,54 @@ export const tenses: Tense[] = [
   {
     name: "过去将来时",
     englishName: "Past Future Simple",
-    pattern: "主语 + would + 动词原形",
-    function: "表示从过去某个时间点看将来要发生的事情。",
+    pattern: "主语 + would/should + be + 其他\n主语 + would/should + 动词原形 + 其他",
+    function: "功能：从过去看将来要发生的事情。",
     positive: "He said he would come.",
     negative: "He said he would not come.",
     question: "Would he come?",
     note: "常见于宾语从句中，主句用过去时，从句用过去将来时。",
+    sentenceTable: {
+      colLabels: [
+        { label: "would / should + 动词原形", pattern: "" },
+        { label: "was/were going to + 动词原形", pattern: "" },
+      ],
+      body: [
+        {
+          sentenceType: "肯定句",
+          formulas: [
+            "主语 + would/should + be + 其他\n主语 + would/should + 动词原形 + 其他",
+            "主语 + was/were going to + be + 其他\n主语 + was/were going to + 动词原形 + 其他",
+          ],
+          examples: [["", ""], ["", ""]],
+        },
+        {
+          sentenceType: "否定句",
+          formulas: [
+            "主语 + would/should + not + be + 其他\n主语 + would/should + not + 动词原形 + 其他",
+            "主语 + was/were + not going to + be + 其他\n主语 + was/were + not going to + 动词原形 + 其他",
+          ],
+          examples: [["", ""], ["", ""]],
+        },
+        {
+          sentenceType: "一般疑问句",
+          formulas: [
+            "Would/Should + 主语 + be + 其他\nWould/Should + 主语 + 动词原形 + 其他",
+            "Was/Were + 主语 + going to + be + 其他\nWas/Were + 主语 + going to + 动词原形 + 其他",
+          ],
+          examples: [["", ""], ["", ""]],
+        },
+        {
+          sentenceType: "特殊疑问句",
+          formulas: ["特殊疑问词 + 一般疑问句", "特殊疑问词 + 一般疑问句"],
+          examples: [["", ""], ["", ""]],
+        },
+        {
+          sentenceType: "祈使句",
+          formulas: ["—", "动词原形 + 其他"],
+          examples: [["", ""], ["", ""]],
+        },
+      ],
+    },
   },
   {
     name: "过去进行时",
@@ -271,54 +355,180 @@ export const tenses: Tense[] = [
   {
     name: "现在完成时",
     englishName: "Present Perfect",
-    pattern: "主语 + have/has + 过去分词 + 其他",
-    function: "表示过去发生的事情对现在有影响，或从过去持续到现在。",
+    pattern: "主语 + have/has + 动词的过去分词 + 其他",
+    function: "功能：现在之前（过去）发生的事情，动作部分完成或全部完成（对现在有一点影响）。",
     positive: "I have finished my homework.",
     negative: "I have not finished my homework.",
     question: "Have you finished your homework?",
     note: "它关注「现在的结果或影响」，不是单纯讲过去某个时间。",
+    sentenceTable: {
+      colLabels: [
+        { label: "have / has + been", pattern: "主语 + have/has + been + 其他" },
+        { label: "have / has + 动词的过去分词", pattern: "主语 + have/has + 动词的过去分词 + 其他" },
+      ],
+      body: [
+        {
+          sentenceType: "肯定句",
+          formulas: ["主语 + have/has + been + 其他", "主语 + have/has + 动词的过去分词 + 其他"],
+          examples: [["I have been a student for years."], ["I have done the work for two hours."]],
+        },
+        {
+          sentenceType: "否定句",
+          formulas: ["主语 + have/has + not + been + 其他", "主语 + have/has + not + 动词的过去分词 + 其他"],
+          examples: [[""], ["I have not got time to do it so far.\nShe has not received my letter up to now."]],
+        },
+        {
+          sentenceType: "一般疑问句",
+          formulas: ["Have/Has + 主语 + been + 其他", "Have/Has + 主语 + 动词的过去分词 + 其他"],
+          examples: [["Has she been in China for two years?"], ["Have you done the work yet?"]],
+        },
+        {
+          sentenceType: "特殊疑问句",
+          formulas: ["特殊疑问词 + 一般疑问句", "特殊疑问词 + 一般疑问句"],
+          examples: [[""], ["What have you done since last years?\nWhat has she studied since 2009?"]],
+        },
+        {
+          sentenceType: "祈使句",
+          formulas: ["—", "—"],
+          examples: [["—"], ["—"]],
+        },
+      ],
+    },
   },
   {
     name: "过去完成时",
     englishName: "Past Perfect",
-    pattern: "主语 + had + 过去分词 + 其他",
-    function: "表示过去某个时间或动作之前已经完成的事情。",
+    pattern: "主语 + had + 动词的过去分词 + 其他",
+    function: "功能：表示在过去某个动作或某个具体时间之前发生或完成的动作。",
     positive: "I had finished the work before he came.",
     negative: "I had not finished the work before he came.",
     question: "Had you finished the work before he came?",
     note: "可以理解为「过去的过去」。",
+    sentenceTable: {
+      colLabels: [
+        { label: "had + been", pattern: "主语 + had + been + 其他" },
+        { label: "had + 动词的过去分词", pattern: "主语 + had + 动词的过去分词 + 其他" },
+      ],
+      body: [
+        {
+          sentenceType: "肯定句",
+          formulas: ["主语 + had + been + 其他", "主语 + had + 动词的过去分词 + 其他"],
+          examples: [[""], [""]],
+        },
+        {
+          sentenceType: "否定句",
+          formulas: ["主语 + had + not + been + 其他", "主语 + had + not + 动词的过去分词 + 其他"],
+          examples: [[""], [""]],
+        },
+        {
+          sentenceType: "一般疑问句",
+          formulas: [
+            "Had + 主语 + been + 其他\n肯定回答：Yes, 主语 + had.\n否定回答：No, 主语 + hadn't.",
+            "Had + 主语 + 动词的过去分词 + 其他\n肯定回答：Yes, 主语 + had.\n否定回答：No, 主语 + hadn't.",
+          ],
+          examples: [[""], [""]],
+        },
+        {
+          sentenceType: "特殊疑问句",
+          formulas: ["特殊疑问词 + 一般疑问句", "特殊疑问词 + 一般疑问句"],
+          examples: [[""], [""]],
+        },
+        {
+          sentenceType: "祈使句",
+          formulas: ["—", "—"],
+          examples: [["—"], ["—"]],
+        },
+      ],
+    },
   },
 
   // ── 第 3 组：绿色 ──
   {
     name: "将来进行时",
     englishName: "Future Continuous",
-    pattern: "主语 + will be + 动词 ing + 其他",
-    function: "表示将来某个时刻正在发生的动作。",
+    pattern: "主语 + shall/will + be + 动词 ing + 其他",
+    function: "功能1：表示将来某个时刻或某一段时间里正在发生的动作。功能2：{r}代替一般将来时{/r}，表示一种已经决定或肯定的动作。",
     positive: "I will be working at 10 tomorrow morning.",
     negative: "I will not be working at 10 tomorrow morning.",
     question: "Will you be working at 10 tomorrow morning?",
     note: "强调将来某一时间点动作正在进行。",
+    sentenceTable: {
+      colLabels: [
+        { label: "shall / will + be + 动词 ing", pattern: "主语 + shall/will + be + 动词 ing + 其他" },
+      ],
+      body: [
+        { sentenceType: "肯定句", formulas: ["主语 + shall/will + be + 动词 ing + 其他"], examples: [[""]] },
+        { sentenceType: "否定句", formulas: ["主语 + shall/will + not + be + 动词 ing + 其他"], examples: [[""]] },
+        { sentenceType: "一般疑问句", formulas: ["Shall/Will + 主语 + be + 动词 ing + 其他"], examples: [[""]] },
+        { sentenceType: "特殊疑问句", formulas: ["特殊疑问词 + 一般疑问句"], examples: [[""]] },
+        { sentenceType: "祈使句", formulas: ["—"], examples: [["—"]] },
+      ],
+    },
   },
   {
     name: "将来完成时",
     englishName: "Future Perfect",
-    pattern: "主语 + will have + 过去分词 + 其他",
-    function: "表示到将来某个时间为止已经完成的动作。",
+    pattern: "主语 + shall/will + have + been + 其他\n主语 + shall/will + have + 动词的过去分词 + 其他",
+    function: "功能：表示将来某时间或动作之前已经完成的动作。",
     positive: "I will have finished the book by Friday.",
     negative: "I will not have finished the book by Friday.",
     question: "Will you have finished the book by Friday?",
     note: "常和 by + 将来时间搭配。",
+    sentenceTable: {
+      colLabels: [
+        { label: "shall / will + have + been", pattern: "主语 + shall/will + have + been + 其他" },
+        { label: "shall / will + have + 动词的过去分词", pattern: "主语 + shall/will + have + 动词的过去分词 + 其他" },
+      ],
+      body: [
+        {
+          sentenceType: "肯定句",
+          formulas: ["主语 + shall/will + have + been + 其他", "主语 + shall/will + have + 动词的过去分词 + 其他"],
+          examples: [[""], [""]],
+        },
+        {
+          sentenceType: "否定句",
+          formulas: ["主语 + shall/will + not + have + been + 其他", "主语 + shall/will + not + have + 动词的过去分词 + 其他"],
+          examples: [[""], [""]],
+        },
+        {
+          sentenceType: "一般疑问句",
+          formulas: ["Shall/Will + 主语 + have + been + 其他", "Shall/Will + 主语 + have + 动词的过去分词 + 其他"],
+          examples: [[""], [""]],
+        },
+        {
+          sentenceType: "特殊疑问句",
+          formulas: ["特殊疑问词 + 一般疑问句", "特殊疑问词 + 一般疑问句"],
+          examples: [[""], [""]],
+        },
+        {
+          sentenceType: "祈使句",
+          formulas: ["—", "—"],
+          examples: [["—"], ["—"]],
+        },
+      ],
+    },
   },
   {
     name: "现在完成进行时",
     englishName: "Present Perfect Continuous",
     pattern: "主语 + have/has been + 动词 ing + 其他",
-    function: "表示动作从过去开始，一直持续到现在，并可能继续。",
+    function: "功能：从过去持续到现在，且可能继续。",
     positive: "I have been learning English for two years.",
     negative: "I have not been learning English for two years.",
     question: "Have you been learning English for two years?",
     note: "它强调动作的持续过程，而不仅仅是结果。",
+    sentenceTable: {
+      colLabels: [
+        { label: "have / has been + 动词 ing", pattern: "主语 + have/has been + 动词 ing + 其他" },
+      ],
+      body: [
+        { sentenceType: "肯定句", formulas: ["主语 + have/has been + 动词 ing + 其他"], examples: [[""]] },
+        { sentenceType: "否定句", formulas: ["主语 + have/has + not + been + 动词 ing + 其他"], examples: [[""]] },
+        { sentenceType: "一般疑问句", formulas: ["Have/Has + 主语 + been + 动词 ing + 其他"], examples: [[""]] },
+        { sentenceType: "特殊疑问句", formulas: ["特殊疑问词 + 一般疑问句"], examples: [[""]] },
+        { sentenceType: "祈使句", formulas: ["—"], examples: [["—"]] },
+      ],
+    },
   },
 
   // ── 第 4 组：黑色 ──
@@ -326,50 +536,131 @@ export const tenses: Tense[] = [
     name: "过去将来进行时",
     englishName: "Past Future Continuous",
     pattern: "主语 + would be + 动词 ing + 其他",
-    function: "表示从过去看将来某个时刻正在进行的动作。",
+    function: "功能：从过去看，将来某时正在进行的动作。",
     positive: "He said he would be working at 8 p.m.",
     negative: "He said he would not be working at 8 p.m.",
     question: "Would he be working at 8 p.m.?",
     note: "很少使用，多出现在间接引语中。",
+    sentenceTable: {
+      colLabels: [
+        { label: "would be + 动词 ing", pattern: "主语 + would be + 动词 ing + 其他" },
+      ],
+      body: [
+        { sentenceType: "肯定句", formulas: ["主语 + would be + 动词 ing + 其他"], examples: [[""]] },
+        { sentenceType: "否定句", formulas: ["主语 + would + not + be + 动词 ing + 其他"], examples: [[""]] },
+        { sentenceType: "一般疑问句", formulas: ["Would + 主语 + be + 动词 ing + 其他"], examples: [[""]] },
+        { sentenceType: "特殊疑问句", formulas: ["特殊疑问词 + 一般疑问句"], examples: [[""]] },
+        { sentenceType: "祈使句", formulas: ["—"], examples: [["—"]] },
+      ],
+    },
   },
   {
     name: "过去将来完成时",
     englishName: "Past Future Perfect",
-    pattern: "主语 + would have + 过去分词 + 其他",
-    function: "表示从过去看将来某个时间之前已完成的动作。",
+    pattern: "主语 + would + have + been + 其他\n主语 + would + have + 动词的过去分词 + 其他",
+    function: "功能：从过去看，将来某时间前已完成的动作。",
     positive: "He said he would have finished by Monday.",
     negative: "He said he would not have finished by Monday.",
     question: "Would he have finished by Monday?",
     note: "常用于虚拟语气和间接引语中。",
+    sentenceTable: {
+      colLabels: [
+        { label: "would + have + been", pattern: "主语 + would + have + been + 其他" },
+        { label: "would + have + 动词的过去分词", pattern: "主语 + would + have + 动词的过去分词 + 其他" },
+      ],
+      body: [
+        {
+          sentenceType: "肯定句",
+          formulas: ["主语 + would + have + been + 其他", "主语 + would + have + 动词的过去分词 + 其他"],
+          examples: [[""], [""]],
+        },
+        {
+          sentenceType: "否定句",
+          formulas: ["主语 + would + not + have + been + 其他", "主语 + would + not + have + 动词的过去分词 + 其他"],
+          examples: [[""], [""]],
+        },
+        {
+          sentenceType: "一般疑问句",
+          formulas: ["Would + 主语 + have + been + 其他", "Would + 主语 + have + 动词的过去分词 + 其他"],
+          examples: [[""], [""]],
+        },
+        {
+          sentenceType: "特殊疑问句",
+          formulas: ["特殊疑问词 + 一般疑问句", "特殊疑问词 + 一般疑问句"],
+          examples: [[""], [""]],
+        },
+        {
+          sentenceType: "祈使句",
+          formulas: ["—", "—"],
+          examples: [["—"], ["—"]],
+        },
+      ],
+    },
   },
   {
     name: "过去完成进行时",
     englishName: "Past Perfect Continuous",
     pattern: "主语 + had been + 动词 ing + 其他",
-    function: "表示过去某个时间之前一直持续进行的动作。",
+    function: "功能：过去某时间前，一直持续进行的动作。",
     positive: "I had been waiting for two hours before he arrived.",
     negative: "I had not been waiting long.",
     question: "Had you been waiting long?",
     note: "强调过去动作的持续性，常和 for + 时间段连用。",
+    sentenceTable: {
+      colLabels: [
+        { label: "had been + 动词 ing", pattern: "主语 + had been + 动词 ing + 其他" },
+      ],
+      body: [
+        { sentenceType: "肯定句", formulas: ["主语 + had been + 动词 ing + 其他"], examples: [[""]] },
+        { sentenceType: "否定句", formulas: ["主语 + had + not + been + 动词 ing + 其他"], examples: [[""]] },
+        { sentenceType: "一般疑问句", formulas: ["Had + 主语 + been + 动词 ing + 其他"], examples: [[""]] },
+        { sentenceType: "特殊疑问句", formulas: ["特殊疑问词 + 一般疑问句"], examples: [[""]] },
+        { sentenceType: "祈使句", formulas: ["—"], examples: [["—"]] },
+      ],
+    },
   },
   {
     name: "将来完成进行时",
     englishName: "Future Perfect Continuous",
     pattern: "主语 + will have been + 动词 ing + 其他",
-    function: "表示到将来某个时间为止，动作已持续了多久。",
+    function: "功能：到将来某时间，一直持续进行的动作。",
     positive: "By June, I will have been studying here for a year.",
     negative: "I will not have been studying here that long.",
     question: "Will you have been studying here for a year by June?",
     note: "极为少用，强调将来某时间点之前的持续过程。",
+    sentenceTable: {
+      colLabels: [
+        { label: "will have been + 动词 ing", pattern: "主语 + will have been + 动词 ing + 其他" },
+      ],
+      body: [
+        { sentenceType: "肯定句", formulas: ["主语 + will have been + 动词 ing + 其他"], examples: [[""]] },
+        { sentenceType: "否定句", formulas: ["主语 + will + not + have been + 动词 ing + 其他"], examples: [[""]] },
+        { sentenceType: "一般疑问句", formulas: ["Will + 主语 + have been + 动词 ing + 其他"], examples: [[""]] },
+        { sentenceType: "特殊疑问句", formulas: ["特殊疑问词 + 一般疑问句"], examples: [[""]] },
+        { sentenceType: "祈使句", formulas: ["—"], examples: [["—"]] },
+      ],
+    },
   },
   {
     name: "过去将来完成进行时",
     englishName: "Past Future Perfect Continuous",
     pattern: "主语 + would have been + 动词 ing + 其他",
-    function: "表示从过去看将来某时间之前一直持续的动作。",
+    function: "功能：从过去看，一直持续到将来某时间的动作。",
     positive: "He said that by Friday he would have been working there for a month.",
     negative: "He said he would not have been working there that long.",
     question: "Would he have been working there for a month by Friday?",
     note: "极为罕见，几乎不出现在日常会话中。",
+    sentenceTable: {
+      colLabels: [
+        { label: "would have been + 动词 ing", pattern: "主语 + would have been + 动词 ing + 其他" },
+      ],
+      body: [
+        { sentenceType: "肯定句", formulas: ["主语 + would have been + 动词 ing + 其他"], examples: [[""]] },
+        { sentenceType: "否定句", formulas: ["主语 + would + not + have been + 动词 ing + 其他"], examples: [[""]] },
+        { sentenceType: "一般疑问句", formulas: ["Would + 主语 + have been + 动词 ing + 其他"], examples: [[""]] },
+        { sentenceType: "特殊疑问句", formulas: ["特殊疑问词 + 一般疑问句"], examples: [[""]] },
+        { sentenceType: "祈使句", formulas: ["—"], examples: [["—"]] },
+      ],
+    },
   },
 ];
