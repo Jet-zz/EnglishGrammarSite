@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SectionHeading } from "@/components/SectionHeading";
 import { contentVerbs, contentVerbs2, linkingVerbs, verbFeatures } from "@/content/verbs";
+import { RenderWithAssistVerb } from "@/components/AssistVerb";
 
 const featureColors: Record<string, { border: string; bg: string; text: string; badge: string }> = {
   blue:   { border: "border-blue-400",  bg: "bg-blue-50",  text: "text-blue-900",  badge: "bg-blue-100 text-blue-700" },
@@ -84,7 +85,7 @@ export default function VerbsPage() {
                   <span className="text-lg font-bold text-slate-900">{f.name}</span>
                   <span className={`rounded px-1.5 py-0.5 text-xs font-medium ${c.badge}`}>{f.english}</span>
                 </div>
-                <p className="mt-2 text-sm leading-5 text-slate-600">{f.desc}</p>
+                <p className="mt-2 text-sm leading-5 text-slate-600"><RenderWithAssistVerb text={f.desc} /></p>
                 <p className="mt-2 text-xs text-slate-400">
                   {f.name === "时态" ? "点击进入时态专题 →"
                     : f.name === "语态" ? "点击进入语态专题 →"
