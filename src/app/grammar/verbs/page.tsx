@@ -76,19 +76,25 @@ export default function VerbsPage() {
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {verbFeatures.items.map((f) => {
             const c = featureColors[f.color]!;
-            const isTense = f.name === "时态";
+            const isClickable = f.name === "时态" || f.name === "语态" || f.name === "情态";
+            const linkTarget = f.name === "时态" ? "/grammar/tenses" : f.name === "语态" ? "/grammar/voice" : f.name === "情态" ? "/grammar/mood" : "";
             const card = (
-              <div className={`rounded-xl border-l-4 ${c.border} ${c.bg} p-4 shadow-sm ${isTense ? "transition hover:shadow-md hover:brightness-95" : ""}`}>
+              <div className={`rounded-xl border-l-4 ${c.border} ${c.bg} p-4 shadow-sm ${isClickable ? "transition hover:shadow-md hover:brightness-95" : ""}`}>
                 <div className="flex items-center gap-2">
                   <span className="text-lg font-bold text-slate-900">{f.name}</span>
                   <span className={`rounded px-1.5 py-0.5 text-xs font-medium ${c.badge}`}>{f.english}</span>
                 </div>
                 <p className="mt-2 text-sm leading-5 text-slate-600">{f.desc}</p>
-                <p className="mt-2 text-xs text-slate-400">{isTense ? "点击进入时态专题 →" : f.keywords}</p>
+                <p className="mt-2 text-xs text-slate-400">
+                  {f.name === "时态" ? "点击进入时态专题 →"
+                    : f.name === "语态" ? "点击进入语态专题 →"
+                    : f.name === "情态" ? "点击进入情态专题 →"
+                    : f.keywords}
+                </p>
               </div>
             );
-            return isTense ? (
-              <Link key={f.name} href="/grammar/tenses" className="block">
+            return isClickable ? (
+              <Link key={f.name} href={linkTarget} className="block">
                 {card}
               </Link>
             ) : (
