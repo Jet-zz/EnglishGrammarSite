@@ -10,6 +10,31 @@ export const modalNote = {
   hint: "这些没有标注翻译是因为：用法不同，意思不同。",
 };
 
+export const modalUsage = {
+  title: "情态动词的三种用法",
+  items: [
+    {
+      label: "基本意思",
+      sub: "may（可以）",
+      example: "You may come in.",
+      translation: "你可以进来。",
+    },
+    {
+      label: "表示推测",
+      sub: "may（可能）",
+      example: "He may be ill.",
+      translation: "他可能病了。",
+    },
+    {
+      label: "虚拟语气",
+      sub: "would / could / might / should",
+    },
+  ],
+  rule: "情态动词后面",
+  ruleRed: "一定",
+  ruleEnd: " + 动词原形",
+};
+
 export const modalTable = {
   title: "情态动词对照表",
   headers: ["现在", "过去", "情态动词短语"],
