@@ -91,7 +91,7 @@ function colorMark(text: string) {
 }
 
 
-function CollapsibleSection({ label, children }: { label: string; children: React.ReactNode }) {
+function CollapsibleSection({ label, children }: { label: React.ReactNode; children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="mt-2">
@@ -224,30 +224,105 @@ export default function MoodPage() {
               <h3 className="text-base font-bold text-slate-900">{item.label}</h3>
               <CollapsibleSection label="例句">
                 <div className="mt-2">
-                  {item.moreExamples.map((ex: any, ei: number) =>
-                    "section" in ex ? (
-                      <p key={ei} className="mt-3 mb-2 font-mono text-sm font-bold text-slate-800">{colorMark(ex.section)}</p>
-                    ) : "inline" in ex ? (
-                      <p key={ei} className="font-mono text-sm text-slate-800 mb-1">{colorMark(ex.inline)}</p>
-                    ) : (
-                      <div key={ei} className="rounded-lg bg-slate-50 px-4 py-3 font-mono text-sm text-slate-800 mb-2">
-                        {ex.example.includes("\n")
-                          ? ex.example.split("\n").map((line: string, li: number) => (
-                              <p key={li}>{colorMark(line)}</p>
-                            ))
-                          : <p>{colorMark(ex.example)}</p>
-                        }
-                        <div className="mt-1 text-xs text-slate-400">
-                          {ex.translation.includes("\n")
-                            ? ex.translation.split("\n").map((line: string, li: number) => (
-                                <p key={li}>{colorMark(line)}</p>
-                              ))
-                            : <p>{colorMark(ex.translation)}</p>
-                          }
-                        </div>
+                  {/* 将 flat 列表按 section 分组，每组一个折叠小节 */}
+                  {(() => {
+                    const groups: { section: string; items: any[] }[] = [];
+                    const items = item.moreExamples;
+                    for (let i = 0; i < items.length; i++) {
+                      const ex: any = items[i];
+                      if ("section" in ex) {
+                        groups.push({ section: ex.section, items: [] });
+                      } else if (groups.length > 0) {
+                        groups[groups.length - 1].items.push(ex);
+                      } else {
+                        // 没有 section 的内容单独放
+                        if (!groups.length) groups.push({ section: "", items: [] });
+                        groups[0].items.push(ex);
+                      }
+                    }
+                    return groups.map((grp, gi) => (
+                      <div key={gi} className="mb-3">
+                        {grp.section ? (
+                          <CollapsibleSection label={colorMark(grp.section)}>
+                            <div className="mt-2">
+                              {grp.items.map((ex: any, ei: number) =>
+                                "pair" in ex ? (
+                                  <div key={ei} className="mt-2 grid grid-cols-2 gap-4">
+                                    <div>
+                                      {ex.pair.left ? <p className="font-mono text-sm font-bold text-slate-800 mb-2">{colorMark(ex.pair.left)}</p> : null}
+                                      {ex.pair.leftItems?.length > 0 ? (
+                                        <div className="space-y-2">
+                                          {ex.pair.leftItems.map((pair: string[], li: number) => (
+                                            <div key={li} className="rounded-lg bg-slate-50 px-4 py-3 font-mono text-sm text-slate-800">
+                                              <p>{colorMark(pair[0])}</p>
+                                              <p className="mt-1 text-xs text-slate-400">{colorMark(pair[1])}</p>
+                                            </div>
+                                          ))}
+                                        </div>
+                                      ) : null}
+                                    </div>
+                                    <div>
+                                      <p className="font-mono text-sm font-bold text-slate-800 mb-2">{colorMark(ex.pair.right)}</p>
+                                      <CollapsibleSection label="展开">
+                                        <div className="mt-1">
+                                          {ex.pair.rightItems.map((t: string, li: number) => (
+                                            <p key={li} className="font-mono text-sm text-slate-800 mb-0.5">{colorMark(t)}</p>
+                                          ))}
+                                        </div>
+                                      </CollapsibleSection>
+                                    </div>
+                                  </div>
+                                ) : "inline" in ex ? (
+                                  <p key={ei} className="font-mono text-sm text-slate-800 mb-1 pl-5">{colorMark(ex.inline)}</p>
+                                ) : (
+                                  <div key={ei} className="rounded-lg bg-slate-50 px-4 py-3 font-mono text-sm text-slate-800 mb-2">
+                                    {ex.example.includes("\n")
+                                      ? ex.example.split("\n").map((line: string, li: number) => (
+                                          <p key={li}>{colorMark(line)}</p>
+                                        ))
+                                      : <p>{colorMark(ex.example)}</p>
+                                    }
+                                    <div className="mt-1 text-xs text-slate-400">
+                                      {ex.translation.includes("\n")
+                                        ? ex.translation.split("\n").map((line: string, li: number) => (
+                                            <p key={li}>{colorMark(line)}</p>
+                                          ))
+                                        : <p>{colorMark(ex.translation)}</p>
+                                      }
+                                    </div>
+                                  </div>
+                                )
+                              )}
+                            </div>
+                          </CollapsibleSection>
+                        ) : (
+                          // 无 section 的项直接排
+                          grp.items.map((ex: any, ei: number) =>
+                            "inline" in ex ? (
+                              <p key={ei} className="font-mono text-sm text-slate-800 mb-1 pl-5">{colorMark(ex.inline)}</p>
+                            ) : (
+                              <div key={ei} className="rounded-lg bg-slate-50 px-4 py-3 font-mono text-sm text-slate-800 mb-2">
+                                {ex.example.includes("\n")
+                                  ? ex.example.split("\n").map((line: string, li: number) => (
+                                      <p key={li}>{colorMark(line)}</p>
+                                    ))
+                                  : <p>{colorMark(ex.example)}</p>
+                                }
+                                <div className="mt-1 text-xs text-slate-400">
+                                  {ex.translation.includes("\n")
+                                    ? ex.translation.split("\n").map((line: string, li: number) => (
+                                        <p key={li}>{colorMark(line)}</p>
+                                      ))
+                                    : <p>{colorMark(ex.translation)}</p>
+                                  }
+                                </div>
+                              </div>
+                            )
+                          )
+                        )}
                       </div>
-                    )
-                  )}
+                    ));
+                  })()}
                 </div>
               </CollapsibleSection>
             </div>

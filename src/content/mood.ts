@@ -14,7 +14,7 @@ export type ModalUsageItem = {
   label: string;
   sub: string;
   introExample?: { example: string; translation: string };
-  moreExamples?: ({ example: string; translation: string } | { section: string } | { inline: string })[];
+  moreExamples?: ({ example: string; translation: string } | { section: string } | { inline: string } | { pair: { left: string; leftItems: string[][]; right: string; rightItems: string[] } })[];
 };
 
 export const modalUsage = {
@@ -52,6 +52,7 @@ export const modalUsage = {
         { example: "John isn't in class. He {b}{r}谓语动词{/r}|{p}must{/p} be{/b} sick.", translation: "约翰今天没上课，他一定是病了。" },
         { example: "John isn't in class. He {b}{r}谓语动词{/r}|{p}may{/p} be{/b} sick.", translation: "约翰今天没上课，他可能是病了。" },
         { example: "John isn't in class. He {b}{r}谓语动词{/r}|{p}should{/p} be{/b} sick.", translation: "约翰今天没上课，他应该是病了。" },
+        { example: "He {b}{r}谓语动词{/r}|{p}must{/p} drink{/b} a lot of milk.\n要根据上下文分析是哪种意思：\n医生说的话 → {g}基本意思{/g}：他{y}必须{/y}多喝牛奶。\n超市看到买很多牛奶 → {g}推测{/g}：他{p}肯定爱{/p}喝牛奶。", translation: "" },
         { section: "{r}情态动词{/r} + 完成式 / 进行式 / 完成进行式" },
         { inline: "完成式：{r}may{/r} {p}have done{/p}" },
         { inline: "进行式：{r}should{/r} {p}be doing{/p}" },
@@ -63,6 +64,8 @@ export const modalUsage = {
         { example: "He {b}{r}谓语动词{/r}|{p}must{/p} {r}have done{/r}{/b} most of the work.", translation: "他一定（{g}已经{/g}）完成了大多数的工作。" },
         { example: "You look very tired.\nYou {b}{r}谓语动词{/r}|{p}must{/p} {r}have been working{/r}{/b} all day.", translation: "你看起来很累。\n你准是忙了一整天。" },
         { example: "You look very tired.\nYou {b}{r}谓语动词{/r}|{p}may{/p} {r}have been playing{/r}{/b} PC for two hours.", translation: "你看起来很累。\n你可能已经玩了2个小时电脑了。" },
+        { section: "{r}情态动词{/r} + 情态动词短语" },
+        { pair: { left: "", leftItems: [["I {b}{r}谓语动词{/r}|{r}will be able to{/r} help{/b} soon.", "我将能很快帮你。"], ["If you {b}{r}谓语动词{/r}|{r}could{/r} {p}work{/p}{/b} hard, we {b}{r}谓语动词{/r}|{r}might be allowed to{/r} {p}leave{/p}{/b} earlier.", "如果你之前能努力工作，我们可能就允许更早离开。"], ["You {b}{r}谓语动词{/r}|{r}might have to{/r} work{/b} late. The others {b}{r}谓语动词{/r}|{r}may be allowed to{/r} leave{/b} early.", "你可能不得不工作到很晚。其他人可能允许早点离开。"]], right: "{r}情态动词短语合集{/r}", rightItems: ["be able to — 能", "be allowed to — 允许", "have (got) to — 不得不", "be supposed to — 应该", "ought to — 应该（责任）", "be going to — 打算"] } },
       ],
     },
     {
