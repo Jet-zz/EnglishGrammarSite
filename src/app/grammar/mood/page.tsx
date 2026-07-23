@@ -11,7 +11,7 @@ export default function MoodPage() {
         description={moodIntro.intro}
       />
       <p className="mt-2 text-sm leading-6 text-slate-600 max-w-3xl">
-        在谓语中的作用：情态动词是<AssistVerb>助动词</AssistVerb>，必须帮助动词形成复合谓语。
+        在谓语中的作用：情态动词是（当作）<AssistVerb>助动词</AssistVerb>，必须帮助动词形成复合谓语。
       </p>
 
       {/* ── 情态动词对照表 + 词义说明 ── */}
