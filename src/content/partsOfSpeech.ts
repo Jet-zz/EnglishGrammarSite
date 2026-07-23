@@ -33,6 +33,7 @@ export const partsOfSpeech: PartOfSpeech[] = [
     examples: ["happy", "blue", "tall", "important"],
     sentence: "This is a blue bag.",
     note: "形容词可以修饰名词，也可以出现在系动词后做表语。",
+    linkTo: "/grammar/adjectives",
   },
   {
     name: "副词",
