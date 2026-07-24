@@ -1,15 +1,48 @@
 "use client";
 
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { SectionHeading } from "@/components/SectionHeading";
 
-function CollapsibleSection({ label, children }: { label: string; children: React.ReactNode }) {
+function TheBadge() {
+  const [rect, setRect] = useState<DOMRect | null>(null);
+  return (
+    <>
+      <span
+        className="inline cursor-help text-red-600 font-bold"
+        onMouseEnter={(e) => setRect(e.currentTarget.getBoundingClientRect())}
+        onMouseLeave={() => setRect(null)}
+      >
+        the
+      </span>
+      {rect ? createPortal(
+        <div
+          className="fixed pointer-events-none"
+          style={{
+            top: rect.top - 8,
+            left: rect.left + rect.width / 2,
+            transform: "translate(-50%, -100%)",
+            zIndex: 99999,
+          }}
+        >
+          <div className="rounded-lg border border-slate-300 bg-white px-3 py-2 shadow-lg text-xs whitespace-nowrap">
+            <span className="font-bold text-red-600">形容词最高级前</span>要加 <span className="font-bold text-red-600">the</span>，特指
+          </div>
+        </div>,
+        document.body
+      ) : null}
+    </>
+  );
+}
+
+function CollapsibleSection({ label, children, size }: { label: string; children: React.ReactNode; size?: "sm" | "base" }) {
   const [open, setOpen] = useState(false);
+  const cls = size === "base" ? "text-sm" : "text-xs";
   return (
     <div className="mt-2">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-700 transition"
+        className={`flex items-center gap-1.5 ${cls} font-semibold text-slate-500 hover:text-slate-700 transition`}
       >
         <svg className={`w-3.5 h-3.5 transition-transform ${open ? "rotate-90" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -17,6 +50,29 @@ function CollapsibleSection({ label, children }: { label: string; children: Reac
         {label}
       </button>
       {open ? children : null}
+    </div>
+  );
+}
+
+function ComparisionBlock({ title, desc, children }: { title: string; desc: React.ReactNode; children: React.ReactNode }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="mt-4">
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-700 transition"
+      >
+        <svg className={`w-3.5 h-3.5 transition-transform ${open ? "rotate-90" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+        <span className="text-sm font-semibold text-slate-700">{title}</span>
+      </button>
+      {open ? (
+        <div className="mt-2">
+          <p className="text-xs text-slate-500 mb-2 ml-5">{desc}</p>
+          <div className="ml-5">{children}</div>
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -80,8 +136,430 @@ export default function AdjectivesPage() {
               <p>There is nothing <span className="text-red-600 font-bold">important</span>.</p>
               <p className="mt-0.5 text-xs text-slate-400">没什么重要的事。</p>
             </div>
+            <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-sm text-slate-800">
+              <p>I can give you something <span className="text-red-600 font-bold">interesting</span>.</p>
+              <p className="mt-0.5 text-xs text-slate-400">我可以给你有趣的东西。</p>
+            </div>
+            <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-sm text-slate-800">
+              <p>I don't want to see anybody <span className="text-red-600 font-bold">stupid</span> here.</p>
+              <p className="mt-0.5 text-xs text-slate-400">我不想在这儿看到任何愚蠢的人。</p>
+            </div>
           </div>
         </CollapsibleSection>
+      </section>
+
+      {/* 词序排序 */}
+      <section className="mt-10">
+        <h2 className="text-xl font-bold text-slate-950">多个形容词修饰名词时的词序排序</h2>
+        <div className="flex flex-col lg:flex-row gap-4 items-start">
+          <div className="lg:w-1/2 w-full">
+            <CollapsibleSection label="词序规则">
+              <div className="mt-3 grid gap-0.5">
+                {[
+                  "限定词（my, the, three, this）",
+                  "观点形容词（beautiful, famous）",
+                  "尺寸大小（large, small, long）",
+                  "形状（round, square）",
+                  "新旧（new, old, ancient）",
+                  "颜色（white, yellow）",
+                  "国籍、出处或产地",
+                  "质地材料",
+                  "中心名词",
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 rounded-lg bg-slate-50 px-4 py-2 text-sm text-slate-800">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-200 text-xs font-bold text-slate-600">
+                      {i + 1}
+                    </span>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </CollapsibleSection>
+          </div>
+          <div className="lg:w-1/2 w-full">
+            <CollapsibleSection label="例句">
+              <div className="mt-3 space-y-0.5">
+                <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-sm text-slate-800">
+                  <p>Li Bai was a
+                    <span className="text-red-600 font-bold"> famous</span>
+                    <span className="text-blue-600 font-bold"> ancient</span>
+                    <span className="text-emerald-600 font-bold"> Chinese</span> poet.
+                  </p>
+                  <p className="mt-0.5 text-xs text-slate-400">李白是中国古代一位著名的诗人。</p>
+                </div>
+                <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-sm text-slate-800">
+                  <p>
+                    <span className="text-slate-600 font-bold">This</span>
+                    <span className="text-red-600 font-bold"> beautiful</span>,
+                    <span className="text-amber-600 font-bold"> big</span>,
+                    <span className="text-blue-600 font-bold"> old</span>,
+                    <span className="text-emerald-600 font-bold"> red</span>,
+                    <span className="text-purple-600 font-bold"> Chinese</span>
+                    <span className="text-rose-600 font-bold"> wooden</span> table was my grandmother's.
+                  </p>
+                  <p className="mt-0.5 text-xs text-slate-400">这张又大又漂亮的红色的中国式旧木桌是我奶奶的。</p>
+                </div>
+              </div>
+            </CollapsibleSection>
+          </div>
+        </div>
+      </section>
+
+      {/* 形容词的比较级和最高级 */}
+      <section className="mt-10">
+        <h2 className="text-xl font-bold text-slate-950">形容词的比较级和最高级</h2>
+        <div className="mt-3 max-w-3xl text-base leading-7 text-slate-700">
+          <p>
+            形容词具有<span className="text-yellow-600 font-bold">原级</span>、<span className="text-yellow-600 font-bold">比较级</span>和<span className="text-yellow-600 font-bold">最高级</span>三个等级比较。
+          </p>
+          <p className="mt-2">
+            比较级和最高级有两种表达方式：<br />
+            第一种：在词尾<span className="text-yellow-600 font-bold">加 -er</span> 构成比较级，<span className="text-yellow-600 font-bold">加 -est</span> 构成最高级。<br />
+            第二种：在形容词<span className="text-yellow-600 font-bold">前面加 more</span> 构成比较级，<span className="text-yellow-600 font-bold">加 most</span> 构成最高级。
+          </p>
+          <p className="mt-2">
+            这两种构成方式与形容词的<span className="text-yellow-600 font-bold">音节数目</span>有关。<br />
+            此外，英语中还有一些形容词没有比较级和最高级的变化。
+          </p>
+        </div>
+
+        <div className="mt-4">
+          {/* 单音节词 */}
+          <ComparisionBlock
+            title="常规形状：单音节词"
+            desc={<>一般直接在<span className="text-yellow-600 font-bold">词尾加 -er</span> 和 <span className="text-yellow-600 font-bold">-est</span>，分别构成<span className="text-yellow-600 font-bold">比较级</span>和<span className="text-yellow-600 font-bold">最高级</span>。</>}
+          >
+            <div className="flex items-start gap-4">
+              <div className="inline-block overflow-hidden rounded-xl border border-slate-200 bg-white shrink-0 w-64">
+                <table className="w-full text-left text-sm">
+                  <thead className="bg-slate-950 text-white">
+                    <tr>
+                      <th className="px-3 py-2">原级</th>
+                      <th className="px-3 py-2">比较级</th>
+                      <th className="px-3 py-2">最高级</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {[
+                      ["bright", ["brighter", "er"], ["brightest", "est"]],
+                      ["tall", ["taller", "er"], ["tallest", "est"]],
+                      ["strong", ["stronger", "er"], ["strongest", "est"]],
+                      ["long", ["longer", "er"], ["longest", "est"]],
+                    ].map((row, ri) => (
+                      <tr key={ri} className="hover:bg-slate-50">
+                        <td className="px-3 py-1.5 font-mono text-xs text-slate-800">{row[0] as string}</td>
+                        {([1, 2] as const).map((ci) => {
+                          const [word, suffix] = row[ci] as [string, string];
+                          const base = word.slice(0, -suffix.length);
+                          return (
+                            <td key={ci} className="px-3 py-1.5 font-mono text-xs text-slate-800">
+                              {base}<span className="text-yellow-600 font-bold">{suffix}</span>
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="rounded-lg bg-slate-50 px-4 py-2.5 font-mono text-sm text-slate-800 min-w-0">
+                <p>
+                  The <span className="text-red-600 font-bold">taller</span> man is looking at <TheBadge /> <span className="text-red-600 font-bold">brightest</span> star.
+                </p>
+                <p className="mt-0.5 text-xs text-slate-400">这个比较高的男人正在看着最亮的那颗星星。</p>
+              </div>
+            </div>
+          </ComparisionBlock>
+
+          {/* 以-e结尾的单音节词 */}
+          <ComparisionBlock
+            title="非常规形状：单音节词"
+            desc={<>以 <span className="text-yellow-600 font-bold">-e 结尾</span> 的词，直接在<span className="text-yellow-600 font-bold">词尾加 -r</span> 和 <span className="text-yellow-600 font-bold">-st</span>，分别构成<span className="text-yellow-600 font-bold">比较级</span>和<span className="text-yellow-600 font-bold">最高级</span>。</>}
+          >
+            <div className="flex items-start gap-4">
+              <div className="inline-block overflow-hidden rounded-xl border border-slate-200 bg-white shrink-0 w-64">
+                <table className="w-full text-left text-sm">
+                  <thead className="bg-slate-950 text-white">
+                    <tr>
+                      <th className="px-3 py-2">原级</th>
+                      <th className="px-3 py-2">比较级</th>
+                      <th className="px-3 py-2">最高级</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {[
+                      ["brave", ["braver", "r"], ["bravest", "st"]],
+                      ["late", ["later", "r"], ["latest", "st"]],
+                      ["large", ["larger", "r"], ["largest", "st"]],
+                      ["safe", ["safer", "r"], ["safest", "st"]],
+                    ].map((row, ri) => (
+                      <tr key={ri} className="hover:bg-slate-50">
+                        <td className="px-3 py-1.5 font-mono text-xs text-slate-800">{row[0] as string}</td>
+                        {([1, 2] as const).map((ci) => {
+                          const [word, suffix] = row[ci] as [string, string];
+                          const base = word.slice(0, -suffix.length);
+                          return (
+                            <td key={ci} className="px-3 py-1.5 font-mono text-xs text-slate-800">
+                              {base}<span className="text-yellow-600 font-bold">{suffix}</span>
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="rounded-lg bg-slate-50 px-4 py-2.5 font-mono text-sm text-slate-800 min-w-0">
+                <p>
+                  The <span className="text-red-600 font-bold">braver</span> man wants to eat <TheBadge /> <span className="text-red-600 font-bold">largest</span> burger.
+                </p>
+                <p className="mt-0.5 text-xs text-slate-400">这个比较英勇的男人想吃更大的汉堡。</p>
+              </div>
+            </div>
+          </ComparisionBlock>
+
+          {/* 以-y结尾的词 */}
+          <ComparisionBlock
+            title="非常规形状：单音节词"
+            desc={<>以 <span className="text-yellow-600 font-bold">-y 结尾</span> 的词应先<span className="text-yellow-600 font-bold">变 y 为 i</span>，再加 <span className="text-yellow-600 font-bold">-er</span> 和 <span className="text-yellow-600 font-bold">-est</span> 分别构成<span className="text-yellow-600 font-bold">比较级</span>和<span className="text-yellow-600 font-bold">最高级</span>。</>}
+          >
+            <div className="flex items-start gap-4">
+              <div className="inline-block overflow-hidden rounded-xl border border-slate-200 bg-white shrink-0 w-64">
+                <table className="w-full text-left text-sm">
+                  <thead className="bg-slate-950 text-white">
+                    <tr>
+                      <th className="px-3 py-2">原级</th>
+                      <th className="px-3 py-2">比较级</th>
+                      <th className="px-3 py-2">最高级</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {[
+                      ["shy", ["shier", "er"], ["shiest", "est"]],
+                      ["dry", ["drier", "er"], ["driest", "est"]],
+                    ].map((row, ri) => (
+                      <tr key={ri} className="hover:bg-slate-50">
+                        <td className="px-3 py-1.5 font-mono text-xs text-slate-800">{row[0] as string}</td>
+                        {([1, 2] as const).map((ci) => {
+                          const [word, suffix] = row[ci] as [string, string];
+                          const base = word.slice(0, -suffix.length);
+                          return (
+                            <td key={ci} className="px-3 py-1.5 font-mono text-xs text-slate-800">
+                              {base}<span className="text-yellow-600 font-bold">{suffix}</span>
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="rounded-lg bg-slate-50 px-4 py-2.5 font-mono text-sm text-slate-800 min-w-0 space-y-2">
+                <div>
+                  <p>
+                    The <span className="text-red-600 font-bold">higher</span> boy is <span className="text-red-600 font-bold">shier</span> than me.
+                  </p>
+                  <p className="mt-0.5 text-xs text-slate-400">这个比较高的男孩比我更害羞。</p>
+                </div>
+                <div>
+                  <p>
+                    <TheBadge /> <span className="text-red-600 font-bold">tallest</span> man likes <TheBadge /> <span className="text-red-600 font-bold">driest</span> potato.
+                  </p>
+                  <p className="mt-0.5 text-xs text-slate-400">这个最高的男人喜欢最干的土豆。</p>
+                </div>
+              </div>
+            </div>
+          </ComparisionBlock>
+
+          {/* 一个元音+辅音结尾的词 */}
+          <ComparisionBlock
+            title="非常规形状：单音节词"
+            desc={<>以"一个元音 + 辅音"结尾的词，要先<span className="text-yellow-600 font-bold">双写词尾的辅音字母</span>，然后再加 <span className="text-yellow-600 font-bold">-er</span> 和 <span className="text-yellow-600 font-bold">-est</span> 分别构成<span className="text-yellow-600 font-bold">比较级</span>和<span className="text-yellow-600 font-bold">最高级</span>。</>}
+          >
+            <div className="flex items-start gap-4">
+              <div className="inline-block overflow-hidden rounded-xl border border-slate-200 bg-white shrink-0 w-64">
+                <table className="w-full text-left text-sm">
+                  <thead className="bg-slate-950 text-white">
+                    <tr>
+                      <th className="px-3 py-2">原级</th>
+                      <th className="px-3 py-2">比较级</th>
+                      <th className="px-3 py-2">最高级</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {[
+                      ["fat", ["fatter", "er"], ["fattest", "est"]],
+                      ["thin", ["thinner", "er"], ["thinnest", "est"]],
+                      ["big", ["bigger", "er"], ["biggest", "est"]],
+                      ["sad", ["sadder", "er"], ["saddest", "est"]],
+                    ].map((row, ri) => (
+                      <tr key={ri} className="hover:bg-slate-50">
+                        <td className="px-3 py-1.5 font-mono text-xs text-slate-800">{row[0] as string}</td>
+                        {([1, 2] as const).map((ci) => {
+                          const [word, suffix] = row[ci] as [string, string];
+                          const base = word.slice(0, -suffix.length);
+                          return (
+                            <td key={ci} className="px-3 py-1.5 font-mono text-xs text-slate-800">
+                              {base}<span className="text-yellow-600 font-bold">{suffix}</span>
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="rounded-lg bg-slate-50 px-4 py-2.5 font-mono text-sm text-slate-800 min-w-0">
+                <p>
+                  The <span className="text-red-600 font-bold">fatter</span> man is <TheBadge /> <span className="text-red-600 font-bold">saddest</span>.
+                </p>
+                <p className="mt-0.5 text-xs text-slate-400">这个比较胖的男人是最伤心的。</p>
+              </div>
+            </div>
+          </ComparisionBlock>
+
+          {/* 以-y结尾的双音节词 */}
+          <ComparisionBlock
+            title="常规形状：双音节词"
+            desc={<>以 <span className="text-yellow-600 font-bold">-y 结尾</span> 的双音节形容词，要先<span className="text-yellow-600 font-bold">变 y 为 i</span>，再<span className="text-yellow-600 font-bold">加 -er</span> 和 <span className="text-yellow-600 font-bold">-est</span> 分别构成<span className="text-yellow-600 font-bold">比较级</span>和<span className="text-yellow-600 font-bold">最高级</span>。</>}
+          >
+            <div className="flex items-start gap-4">
+              <div className="inline-block overflow-hidden rounded-xl border border-slate-200 bg-white shrink-0 w-64">
+                <table className="w-full text-left text-sm">
+                  <thead className="bg-slate-950 text-white">
+                    <tr>
+                      <th className="px-3 py-2">原级</th>
+                      <th className="px-3 py-2">比较级</th>
+                      <th className="px-3 py-2">最高级</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {[
+                      ["early", ["earlier", "er"], ["earliest", "est"]],
+                      ["silly", ["sillier", "er"], ["silliest", "est"]],
+                      ["heavy", ["heavier", "er"], ["heaviest", "est"]],
+                    ].map((row, ri) => (
+                      <tr key={ri} className="hover:bg-slate-50">
+                        <td className="px-3 py-1.5 font-mono text-xs text-slate-800">{row[0] as string}</td>
+                        {([1, 2] as const).map((ci) => {
+                          const [word, suffix] = row[ci] as [string, string];
+                          const base = word.slice(0, -suffix.length);
+                          return (
+                            <td key={ci} className="px-3 py-1.5 font-mono text-xs text-slate-800">
+                              {base}<span className="text-yellow-600 font-bold">{suffix}</span>
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="rounded-lg bg-slate-50 px-4 py-2.5 font-mono text-sm text-slate-800 min-w-0">
+                <p>
+                  The <span className="text-red-600 font-bold">happier</span> man is talking with <TheBadge /> <span className="text-red-600 font-bold">silliest</span> boy.
+                </p>
+                <p className="mt-0.5 text-xs text-slate-400">这个比较开心的男人正在跟最愚蠢的男孩交流。</p>
+              </div>
+            </div>
+          </ComparisionBlock>
+
+          {/* 两种方法构成比较级和最高级 */}
+          <ComparisionBlock
+            title="常规形状：双音节词"
+            desc={<>少数几个双音节词分别可以用上述两种基本方法来构成比较级和最高级。</>}
+          >
+            <div className="flex items-start gap-4">
+              <div className="inline-block overflow-hidden rounded-xl border border-slate-200 bg-white shrink-0">
+                <table className="text-left text-xs">
+                  <thead className="bg-slate-950 text-white">
+                    <tr>
+                      <th className="px-2 py-2 text-xs">原级</th>
+                      <th className="px-2 py-2 text-xs">比较级</th>
+                      <th className="px-2 py-2 text-xs">最高级</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {[
+                      ["common", "more common/commoner", "most common/commonest"],
+                      ["clever", "more clever/cleverer", "most clever/cleverest"],
+                      ["shallow", "more shallow/shallower", "most shallow/shallowest"],
+                    ].map((row, ri) => (
+                      <tr key={ri} className="hover:bg-slate-50">
+                        <td className="px-2 py-1.5 font-mono text-xs text-slate-800">{row[0]}</td>
+                        <td className="px-2 py-1.5 font-mono text-xs text-slate-800">{row[1]}</td>
+                        <td className="px-2 py-1.5 font-mono text-xs text-slate-800">{row[2]}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="rounded-lg bg-slate-50 px-4 py-2.5 font-mono text-sm text-slate-800 min-w-0">
+                <p>
+                  The <span className="text-red-600 font-bold">more common</span> thing is that he is <TheBadge /> <span className="text-red-600 font-bold">cleverest</span> boy.
+                </p>
+                <p className="mt-0.5 text-xs text-slate-400">比较常见的事情是他是最聪明的男孩。</p>
+              </div>
+            </div>
+          </ComparisionBlock>
+        </div>
+      </section>
+
+      {/* 特殊形式的比较级和最高级 */}
+      <section className="mt-10">
+        <h2 className="text-xl font-bold text-slate-950">特殊形式的比较级和最高级</h2>
+        <div className="mt-4 max-w-md">
+          <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+            <table className="w-full text-left text-sm">
+              <thead className="bg-slate-950 text-white">
+                <tr>
+                  <th className="px-4 py-2.5">原形</th>
+                  <th className="px-4 py-2.5">比较级</th>
+                  <th className="px-4 py-2.5">最高级</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {[
+                  ["good / well", "better", "best"],
+                  ["bad / ill", "worse", "worst"],
+                  ["far", "farther / further", "farthest / furthest"],
+                  ["old", "older / elder", "oldest / eldest"],
+                  ["little", "less", "least"],
+                  ["many / much", "more", "most"],
+                  ["late", "later / latter", "latest / last"],
+                  ["up", "upper", "uppermost / upmost"],
+                ].map((row, ri) => (
+                  <tr key={ri} className="hover:bg-slate-50">
+                    {row.map((cell, ci) => (
+                      <td key={ci} className="px-4 py-2 font-mono text-xs text-slate-800">{cell}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+          <CollapsibleSection label="farther / further 的区别" size="base">
+            <div className="mt-3 space-y-3 pl-5">
+              <p className="text-sm leading-6 text-slate-600 pl-3">
+                farther (farthest) / further (furthest) 这四个词都可以指<span className="font-semibold text-slate-800">实际的距离</span>。不过，further / furthest 可用于<span className="text-red-600 font-semibold">抽象意义</span>，表示"进一步的，更多的，更深入的"，常与抽象名词连用：
+              </p>
+              <div className="mt-3 space-y-1.5">
+                {[
+                  ["further discussion", "继续讨论"],
+                  ["further delays", "继续拖延 / 耽搁"],
+                  ["further demands", "进一步的要求"],
+                  ["further information", "更多的信息"],
+                  ["further study", "深入研究"],
+                ].map(([en, zh]) => (
+                  <div key={en} className="flex items-center gap-x-3 rounded-lg bg-slate-50 px-3 py-1.5">
+                    <span className="font-mono text-xs font-semibold text-slate-800">{en}</span>
+                    <span className="text-xs text-slate-500">{zh}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </CollapsibleSection>
       </section>
     </div>
   );
