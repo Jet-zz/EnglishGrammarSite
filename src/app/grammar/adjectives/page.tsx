@@ -582,6 +582,46 @@ export default function AdjectivesPage() {
               </div>
             </div>
           </CollapsibleSection>
+          <CollapsibleSection label="later / latter / latest / last 的区别" size="base">
+            <div className="mt-3 space-y-3 pl-5">
+              <p className="text-sm leading-6 text-slate-600">
+                <span className="font-bold text-slate-800">later</span>：一般用来表示时间上"较迟的"。
+              </p>
+              <div className="flex items-center gap-x-3 rounded-lg bg-slate-50 pl-0 pr-3 py-1.5">
+                <span className="font-mono text-xs font-semibold text-slate-800">I will call you later.</span>
+                <span className="text-xs text-slate-500">我晚一会儿给你打电话。</span>
+              </div>
+              <p className="text-sm leading-6 text-slate-600">
+                <span className="font-bold text-slate-800">latter</span>：则是表示顺序上的"后者"，与 former（前者）相对应。
+              </p>
+              <div className="flex items-center gap-x-3 rounded-lg bg-slate-50 pl-0 pr-3 py-1.5">
+                <span className="font-mono text-xs font-semibold text-slate-800">I like the small one, but I prefer the latter.<br />Should we take a bus or a taxi? Kim wants to take the bus, but I prefer the latter.</span>
+                <span className="text-xs text-slate-500">后者</span>
+              </div>
+              <p className="text-sm leading-6 text-slate-600">
+                <span className="font-bold text-slate-800">latest</span>：意思是"最近的，最新的"，主要用来指新近的事物。
+              </p>
+              <div className="flex items-center gap-x-3 rounded-lg bg-slate-50 pl-0 pr-3 py-1.5">
+                <span className="font-mono text-xs font-semibold text-slate-800">the latest fashions</span>
+                <span className="text-xs text-slate-500">最新款式的服装</span>
+              </div>
+              <div className="flex items-center gap-x-3 rounded-lg bg-slate-50 pl-0 pr-3 py-1.5">
+                <span className="font-mono text-xs font-semibold text-slate-800">the latest news</span>
+                <span className="text-xs text-slate-500">最新消息</span>
+              </div>
+              <p className="text-sm leading-6 text-slate-600">
+                <span className="font-bold text-slate-800">last</span>：最后一个 / 上一个
+              </p>
+              <div className="flex items-center gap-x-3 rounded-lg bg-slate-50 pl-0 pr-3 py-1.5">
+                <span className="font-mono text-xs font-semibold text-slate-800">He is the last one.</span>
+                <span className="text-xs text-slate-500">他是最后一个。</span>
+              </div>
+              <div className="flex items-center gap-x-3 rounded-lg bg-slate-50 pl-0 pr-3 py-1.5">
+                <span className="font-mono text-xs font-semibold text-slate-800">He visited Shanghai last summer.</span>
+                <span className="text-xs text-slate-500">他去年夏天去了上海。</span>
+              </div>
+            </div>
+          </CollapsibleSection>
       </section>
     </div>
   );
