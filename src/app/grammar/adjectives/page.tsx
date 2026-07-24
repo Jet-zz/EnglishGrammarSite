@@ -177,8 +177,7 @@ export default function AdjectivesPage() {
             </CollapsibleSection>
           </div>
           <div className="lg:w-1/2 w-full">
-            <CollapsibleSection label="例句">
-              <div className="mt-3 space-y-0.5">
+              <div className="space-y-0.5">
                 <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-sm text-slate-800">
                   <p>Li Bai was a
                     <span className="text-red-600 font-bold"> famous</span>
@@ -200,7 +199,7 @@ export default function AdjectivesPage() {
                   <p className="mt-0.5 text-xs text-slate-400">这张又大又漂亮的红色的中国式旧木桌是我奶奶的。</p>
                 </div>
               </div>
-            </CollapsibleSection>
+          </div>
           </div>
         </div>
       </section>
