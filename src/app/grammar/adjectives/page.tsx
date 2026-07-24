@@ -152,46 +152,48 @@ export default function AdjectivesPage() {
       <section className="mt-10">
         <h2 className="text-xl font-bold text-slate-950">多个形容词修饰名词时的词序排序</h2>
         <CollapsibleSection label="词序规则" size="base">
-          <div className="mt-3 grid gap-0.5">
-            {[
-              "限定词（my, the, three, this）",
-              "观点形容词（beautiful, famous）",
-              "尺寸大小（large, small, long）",
-              "形状（round, square）",
-              "新旧（new, old, ancient）",
-              "颜色（white, yellow）",
-              "国籍、出处或产地",
-              "质地材料",
-              "中心名词",
-            ].map((item, i) => (
-              <div key={i} className="flex items-center gap-3 rounded-lg bg-slate-50 px-4 py-2 text-sm text-slate-800">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-200 text-xs font-bold text-slate-600">
-                  {i + 1}
-                </span>
-                <span>{item}</span>
-              </div>
-            ))}
-          </div>
-          <div className="mt-4 space-y-0.5">
-            <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-sm text-slate-800">
-              <p>Li Bai was a
-                <span className="text-red-600 font-bold"> famous</span>
-                <span className="text-blue-600 font-bold"> ancient</span>
-                <span className="text-emerald-600 font-bold"> Chinese</span> poet.
-              </p>
-              <p className="mt-0.5 text-xs text-slate-400">李白是中国古代一位著名的诗人。</p>
+          <div className="flex flex-col lg:flex-row gap-6 items-start mt-3">
+            <div className="lg:w-1/2 w-full grid gap-0.5">
+              {[
+                "限定词（my, the, three, this）",
+                "观点形容词（beautiful, famous）",
+                "尺寸大小（large, small, long）",
+                "形状（round, square）",
+                "新旧（new, old, ancient）",
+                "颜色（white, yellow）",
+                "国籍、出处或产地",
+                "质地材料",
+                "中心名词",
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-3 rounded-lg bg-slate-50 px-4 py-2 text-sm text-slate-800">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-200 text-xs font-bold text-slate-600">
+                    {i + 1}
+                  </span>
+                  <span>{item}</span>
+                </div>
+              ))}
             </div>
-            <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-sm text-slate-800">
-              <p>
-                <span className="text-slate-600 font-bold">This</span>
-                <span className="text-red-600 font-bold"> beautiful</span>,
-                <span className="text-amber-600 font-bold"> big</span>,
-                <span className="text-blue-600 font-bold"> old</span>,
-                <span className="text-emerald-600 font-bold"> red</span>,
-                <span className="text-purple-600 font-bold"> Chinese</span>
-                <span className="text-rose-600 font-bold"> wooden</span> table was my grandmother's.
-              </p>
-              <p className="mt-0.5 text-xs text-slate-400">这张又大又漂亮的红色的中国式旧木桌是我奶奶的。</p>
+            <div className="lg:w-1/2 w-full space-y-3">
+              <div className="rounded-lg bg-slate-50 px-5 py-3 font-mono text-base text-slate-800">
+                <p>Li Bai was a
+                  <span className="text-red-600 font-bold"> famous</span>
+                  <span className="text-blue-600 font-bold"> ancient</span>
+                  <span className="text-emerald-600 font-bold"> Chinese</span> poet.
+                </p>
+                <p className="mt-1 text-xs text-slate-400">李白是中国古代一位著名的诗人。</p>
+              </div>
+              <div className="rounded-lg bg-slate-50 px-5 py-3 font-mono text-base text-slate-800">
+                <p>
+                  <span className="text-slate-600 font-bold">This</span>
+                  <span className="text-red-600 font-bold"> beautiful</span>,
+                  <span className="text-amber-600 font-bold"> big</span>,
+                  <span className="text-blue-600 font-bold"> old</span>,
+                  <span className="text-emerald-600 font-bold"> red</span>,
+                  <span className="text-purple-600 font-bold"> Chinese</span>
+                  <span className="text-rose-600 font-bold"> wooden</span> table was my grandmother's.
+                </p>
+                <p className="mt-1 text-xs text-slate-400">这张又大又漂亮的红色的中国式旧木桌是我奶奶的。</p>
+              </div>
             </div>
           </div>
         </CollapsibleSection>
