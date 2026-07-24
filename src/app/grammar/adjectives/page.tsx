@@ -623,6 +623,41 @@ export default function AdjectivesPage() {
             </div>
           </CollapsibleSection>
       </section>
+
+      {/* 不具有等级的形容词 */}
+      <section className="mt-10">
+        <h2 className="text-xl font-bold text-slate-950">不具有等级的形容词</h2>
+        <div className="mt-3 max-w-3xl text-base leading-7 text-slate-700">
+          <p>
+            这些形容词本身就含有<span className="text-yellow-600 font-bold">绝对意义</span>，没有程度之分，因此通常<span className="text-red-600 font-bold">没有比较级和最高级</span>（即使有，逻辑上也不合理）：
+          </p>
+        </div>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {[
+            "absolute（完全的，绝对的）",
+            "alone（单独的，独一无二的）",
+            "dead（死的，无感觉的）",
+            "empty（空的，空洞的）",
+            "equal（平等的）",
+            "eternal（永恒的，不变的）",
+            "final（最终的，决定性的）",
+            "horizontal（水平的）",
+            "perfect（完美的）",
+            "primary（第一位的）",
+            "pregnant（怀孕的，富有的）",
+            "round（圆的，球形的）",
+            "single（单一的）",
+            "square（正方形的）",
+            "straight（直的）",
+            "supreme（最高的，至高的）",
+            "unique（唯一的，独特的）",
+          ].map((w) => (
+            <span key={w} className="rounded-lg bg-slate-100 px-3 py-1.5 font-mono text-sm text-slate-800">
+              {w}
+            </span>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
