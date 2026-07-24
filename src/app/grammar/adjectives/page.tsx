@@ -100,21 +100,21 @@ export default function AdjectivesPage() {
         <h2 className="text-xl font-bold text-slate-950">前置修饰名词（前置定语）</h2>
         <CollapsibleSection label="例句">
           <div className="mt-3 space-y-0.5">
-            <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-sm text-slate-800">
+            <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-base text-slate-800">
               <p>I am reading an <span className="text-red-600 font-bold">interesting</span> book.</p>
-              <p className="mt-0.5 text-xs text-slate-400">我正在看一本有意思的书。</p>
+              <p className="mt-0.5 text-sm text-slate-500">我正在看一本有意思的书。</p>
             </div>
-            <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-sm text-slate-800">
+            <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-base text-slate-800">
               <p>He <span className="text-purple-600 font-bold">should</span> be reading an <span className="text-red-600 font-bold">interesting</span> book.</p>
-              <p className="mt-0.5 text-xs text-slate-400">他应该正在看一本有意思的书。</p>
+              <p className="mt-0.5 text-sm text-slate-500">他应该正在看一本有意思的书。</p>
             </div>
-            <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-sm text-slate-800">
+            <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-base text-slate-800">
               <p>He has a <span className="text-red-600 font-bold">beautiful</span> smile.</p>
-              <p className="mt-0.5 text-xs text-slate-400">他有灿烂的微笑。</p>
+              <p className="mt-0.5 text-sm text-slate-500">他有灿烂的微笑。</p>
             </div>
-            <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-sm text-slate-800">
+            <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-base text-slate-800">
               <p>He is my <span className="text-red-600 font-bold">best</span> friend.</p>
-              <p className="mt-0.5 text-xs text-slate-400">他是我最好的朋友。</p>
+              <p className="mt-0.5 text-sm text-slate-500">他是我最好的朋友。</p>
             </div>
           </div>
         </CollapsibleSection>
@@ -128,21 +128,21 @@ export default function AdjectivesPage() {
         </p>
         <CollapsibleSection label="例句">
           <div className="mt-3 space-y-0.5">
-            <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-sm text-slate-800">
+            <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-base text-slate-800">
               <p>I want to eat something <span className="text-red-600 font-bold">nice</span>.</p>
-              <p className="mt-0.5 text-xs text-slate-400">我想吃点好的。</p>
+              <p className="mt-0.5 text-sm text-slate-500">我想吃点好的。</p>
             </div>
-            <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-sm text-slate-800">
+            <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-base text-slate-800">
               <p>There is nothing <span className="text-red-600 font-bold">important</span>.</p>
-              <p className="mt-0.5 text-xs text-slate-400">没什么重要的事。</p>
+              <p className="mt-0.5 text-sm text-slate-500">没什么重要的事。</p>
             </div>
-            <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-sm text-slate-800">
+            <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-base text-slate-800">
               <p>I can give you something <span className="text-red-600 font-bold">interesting</span>.</p>
-              <p className="mt-0.5 text-xs text-slate-400">我可以给你有趣的东西。</p>
+              <p className="mt-0.5 text-sm text-slate-500">我可以给你有趣的东西。</p>
             </div>
-            <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-sm text-slate-800">
+            <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-base text-slate-800">
               <p>I don't want to see anybody <span className="text-red-600 font-bold">stupid</span> here.</p>
-              <p className="mt-0.5 text-xs text-slate-400">我不想在这儿看到任何愚蠢的人。</p>
+              <p className="mt-0.5 text-sm text-slate-500">我不想在这儿看到任何愚蠢的人。</p>
             </div>
           </div>
         </CollapsibleSection>
@@ -180,7 +180,7 @@ export default function AdjectivesPage() {
                   <span className="text-blue-600 font-bold"> ancient</span>
                   <span className="text-emerald-600 font-bold"> Chinese</span> poet.
                 </p>
-                <p className="mt-1 text-xs text-slate-400">李白是中国古代一位著名的诗人。</p>
+                <p className="mt-1 text-sm text-slate-500">李白是中国古代一位著名的诗人。</p>
               </div>
               <div className="rounded-lg bg-slate-50 px-5 py-3 font-mono text-base text-slate-800">
                 <p>
@@ -192,7 +192,7 @@ export default function AdjectivesPage() {
                   <span className="text-purple-600 font-bold"> Chinese</span>
                   <span className="text-rose-600 font-bold"> wooden</span> table was my grandmother's.
                 </p>
-                <p className="mt-1 text-xs text-slate-400">这张又大又漂亮的红色的中国式旧木桌是我奶奶的。</p>
+                <p className="mt-1 text-sm text-slate-500">这张又大又漂亮的红色的中国式旧木桌是我奶奶的。</p>
               </div>
             </div>
           </div>
@@ -257,11 +257,11 @@ export default function AdjectivesPage() {
                   </tbody>
                 </table>
               </div>
-              <div className="rounded-lg bg-slate-50 px-4 py-2.5 font-mono text-sm text-slate-800 min-w-0">
+              <div className="rounded-lg bg-slate-50 px-4 py-2.5 font-mono text-base text-slate-800 min-w-0">
                 <p>
                   The <span className="text-red-600 font-bold">taller</span> man is looking at <TheBadge /> <span className="text-red-600 font-bold">brightest</span> star.
                 </p>
-                <p className="mt-0.5 text-xs text-slate-400">这个比较高的男人正在看着最亮的那颗星星。</p>
+                <p className="mt-0.5 text-sm text-slate-500">这个比较高的男人正在看着最亮的那颗星星。</p>
               </div>
             </div>
           </ComparisionBlock>
@@ -304,11 +304,11 @@ export default function AdjectivesPage() {
                   </tbody>
                 </table>
               </div>
-              <div className="rounded-lg bg-slate-50 px-4 py-2.5 font-mono text-sm text-slate-800 min-w-0">
+              <div className="rounded-lg bg-slate-50 px-4 py-2.5 font-mono text-base text-slate-800 min-w-0">
                 <p>
                   The <span className="text-red-600 font-bold">braver</span> man wants to eat <TheBadge /> <span className="text-red-600 font-bold">largest</span> burger.
                 </p>
-                <p className="mt-0.5 text-xs text-slate-400">这个比较英勇的男人想吃更大的汉堡。</p>
+                <p className="mt-0.5 text-sm text-slate-500">这个比较英勇的男人想吃更大的汉堡。</p>
               </div>
             </div>
           </ComparisionBlock>
@@ -349,18 +349,18 @@ export default function AdjectivesPage() {
                   </tbody>
                 </table>
               </div>
-              <div className="rounded-lg bg-slate-50 px-4 py-2.5 font-mono text-sm text-slate-800 min-w-0 space-y-2">
+              <div className="rounded-lg bg-slate-50 px-4 py-2.5 font-mono text-base text-slate-800 min-w-0 space-y-2">
                 <div>
                   <p>
                     The <span className="text-red-600 font-bold">higher</span> boy is <span className="text-red-600 font-bold">shier</span> than me.
                   </p>
-                  <p className="mt-0.5 text-xs text-slate-400">这个比较高的男孩比我更害羞。</p>
+                  <p className="mt-0.5 text-sm text-slate-500">这个比较高的男孩比我更害羞。</p>
                 </div>
                 <div>
                   <p>
                     <TheBadge /> <span className="text-red-600 font-bold">tallest</span> man likes <TheBadge /> <span className="text-red-600 font-bold">driest</span> potato.
                   </p>
-                  <p className="mt-0.5 text-xs text-slate-400">这个最高的男人喜欢最干的土豆。</p>
+                  <p className="mt-0.5 text-sm text-slate-500">这个最高的男人喜欢最干的土豆。</p>
                 </div>
               </div>
             </div>
@@ -404,11 +404,11 @@ export default function AdjectivesPage() {
                   </tbody>
                 </table>
               </div>
-              <div className="rounded-lg bg-slate-50 px-4 py-2.5 font-mono text-sm text-slate-800 min-w-0">
+              <div className="rounded-lg bg-slate-50 px-4 py-2.5 font-mono text-base text-slate-800 min-w-0">
                 <p>
                   The <span className="text-red-600 font-bold">fatter</span> man is <TheBadge /> <span className="text-red-600 font-bold">saddest</span>.
                 </p>
-                <p className="mt-0.5 text-xs text-slate-400">这个比较胖的男人是最伤心的。</p>
+                <p className="mt-0.5 text-sm text-slate-500">这个比较胖的男人是最伤心的。</p>
               </div>
             </div>
           </ComparisionBlock>
@@ -450,11 +450,11 @@ export default function AdjectivesPage() {
                   </tbody>
                 </table>
               </div>
-              <div className="rounded-lg bg-slate-50 px-4 py-2.5 font-mono text-sm text-slate-800 min-w-0">
+              <div className="rounded-lg bg-slate-50 px-4 py-2.5 font-mono text-base text-slate-800 min-w-0">
                 <p>
                   The <span className="text-red-600 font-bold">happier</span> man is talking with <TheBadge /> <span className="text-red-600 font-bold">silliest</span> boy.
                 </p>
-                <p className="mt-0.5 text-xs text-slate-400">这个比较开心的男人正在跟最愚蠢的男孩交流。</p>
+                <p className="mt-0.5 text-sm text-slate-500">这个比较开心的男人正在跟最愚蠢的男孩交流。</p>
               </div>
             </div>
           </ComparisionBlock>
@@ -489,11 +489,11 @@ export default function AdjectivesPage() {
                   </tbody>
                 </table>
               </div>
-              <div className="rounded-lg bg-slate-50 px-4 py-2.5 font-mono text-sm text-slate-800 min-w-0">
+              <div className="rounded-lg bg-slate-50 px-4 py-2.5 font-mono text-base text-slate-800 min-w-0">
                 <p>
                   The <span className="text-red-600 font-bold">more common</span> thing is that he is <TheBadge /> <span className="text-red-600 font-bold">cleverest</span> boy.
                 </p>
-                <p className="mt-0.5 text-xs text-slate-400">比较常见的事情是他是最聪明的男孩。</p>
+                <p className="mt-0.5 text-sm text-slate-500">比较常见的事情是他是最聪明的男孩。</p>
               </div>
             </div>
           </ComparisionBlock>
@@ -648,7 +648,7 @@ export default function AdjectivesPage() {
             "supreme（最高的，至高的）",
             "unique（唯一的，独特的）",
           ].map((w) => (
-            <span key={w} className="rounded-lg bg-slate-100 px-3 py-1.5 font-mono text-sm text-slate-800">
+            <span key={w} className="rounded-lg bg-slate-100 px-3 py-1.5 font-mono text-base text-slate-800">
               {w}
             </span>
           ))}
