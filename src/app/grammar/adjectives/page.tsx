@@ -560,6 +560,28 @@ export default function AdjectivesPage() {
               </div>
             </div>
           </CollapsibleSection>
+          <CollapsibleSection label="older / elder 的区别" size="base">
+            <div className="mt-3 space-y-3 pl-5">
+              <p className="text-sm leading-6 text-slate-600">
+                elder 和 eldest 主要是用来表示<span className="font-semibold text-slate-800">家庭成员之间的长幼关系</span>，而并非指年龄的大小。
+              </p>
+              <div className="flex items-center gap-x-3 rounded-lg bg-slate-50 pl-0 pr-3 py-1.5">
+                <span className="font-mono text-xs font-semibold text-slate-800">my elder brother / sister</span>
+                <span className="text-xs text-slate-500">我的哥哥 / 姐姐</span>
+              </div>
+              <div className="flex items-center gap-x-3 rounded-lg bg-slate-50 pl-0 pr-3 py-1.5">
+                <span className="font-mono text-xs font-semibold text-slate-800">his eldest son / daughter</span>
+                <span className="text-xs text-slate-500">他的长子 / 长女</span>
+              </div>
+              <p className="text-sm leading-6 text-slate-600">
+                而在有 than 的比较级的句子中一般不用 elder，而要用 older。
+              </p>
+              <div className="flex items-center gap-x-3 rounded-lg bg-slate-50 pl-0 pr-3 py-1.5">
+                <span className="font-mono text-xs font-semibold text-slate-800">I am five years older than you.</span>
+                <span className="text-xs text-slate-500">我比你年长 5 岁。</span>
+              </div>
+            </div>
+          </CollapsibleSection>
       </section>
     </div>
   );
