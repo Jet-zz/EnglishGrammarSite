@@ -82,7 +82,7 @@ export default function AdjectivesPage() {
     <div className="mx-auto max-w-6xl px-4 py-8 lg:px-8">
       <SectionHeading title="形容词 · Adjective" />
 
-      <div className="mt-8 max-w-3xl text-base leading-7 text-slate-700">
+      <div className="mt-8 max-w-6xl text-base leading-7 text-slate-700">
         <p>
           形容词在<span className="text-red-600 font-bold">名词短语</span>中可以放在
           <span className="text-red-600 font-bold">被修饰名词</span>的前面或者后面，
