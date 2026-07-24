@@ -42,7 +42,7 @@ function CollapsibleSection({ label, children, size }: { label: string; children
     <div className="mt-2">
       <button
         onClick={() => setOpen(!open)}
-        className={`flex items-center gap-1.5 ${cls} font-semibold text-slate-500 hover:text-slate-700 transition`}
+        className={`flex items-center gap-1.5 p-0 ${cls} font-semibold text-slate-500 hover:text-slate-700 transition`}
       >
         <svg className={`w-3.5 h-3.5 transition-transform ${open ? "rotate-90" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -99,7 +99,7 @@ export default function AdjectivesPage() {
       <section className="mt-10">
         <h2 className="text-xl font-bold text-slate-950">前置修饰名词（前置定语）</h2>
         <CollapsibleSection label="例句">
-          <div className="mt-3 space-y-0.5">
+          <div className="mt-3 space-y-0.5 pl-5">
             <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-base text-slate-800">
               <p>I am reading an <span className="text-red-600 font-bold">interesting</span> book.</p>
               <p className="mt-0.5 text-sm text-slate-500">我正在看一本有意思的书。</p>
@@ -120,6 +120,140 @@ export default function AdjectivesPage() {
         </CollapsibleSection>
       </section>
 
+      {/* 形容词比较级的用法 */}
+      <section className="mt-10">
+        <div className="inline-block rounded-md bg-yellow-300 px-4 py-2">
+          <h2 className="text-xl font-bold text-red-600">形容词比较级的用法</h2>
+        </div>
+        <CollapsibleSection label="than 的比较级句型" size="base">
+          <div className="mt-3 space-y-2 leading-7 pl-5">
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-base text-slate-800">My mother is shorter than my father.</span>
+              <span className="text-sm text-slate-500">我妈妈比我爸爸矮。</span>
+            </div>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-base text-slate-800">This picture is more beautiful than that one.</span>
+              <span className="text-sm text-slate-500">这张画比那张画漂亮。</span>
+            </div>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-base text-slate-800">The tall boy is cleverer / more clever than that girl.</span>
+              <span className="text-sm text-slate-500">那个高个子男孩比那个女孩聪明。</span>
+            </div>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-base text-slate-800">Iron is more useful than any other metal.</span>
+              <span className="text-sm text-slate-500">铁比任何其他金属都更有用。</span>
+            </div>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-base text-slate-800">He can earn more money in Shanghai than in Beijing.</span>
+              <span className="text-sm text-slate-500">他在上海挣的钱比在北京多。</span>
+            </div>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-base text-slate-800">This question is less difficult than that question.</span>
+              <span className="text-sm text-slate-500">这个问题比那个问题简单一些。</span>
+            </div>
+          </div>
+        </CollapsibleSection>
+        <CollapsibleSection label="more and more 句型" size="base">
+          <div className="mt-3 space-y-2 leading-7 pl-5">
+            <p className="text-sm text-slate-600">
+              用 <span className="font-mono font-semibold text-slate-800">more and more</span> 双重比较来表示事物持续不断的变化，相当于汉语中的"越来越"。
+            </p>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-base text-slate-800">That female singer is getting fatter and fatter.</span>
+              <span className="text-sm text-slate-500">那位女歌手变得越来越胖了。</span>
+            </div>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-base text-slate-800">The city is becoming more and more beautiful.</span>
+              <span className="text-sm text-slate-500">这座城市变得越来越漂亮了。</span>
+            </div>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-base text-slate-800">The weather is getting colder and colder.</span>
+              <span className="text-sm text-slate-500">天气变得越来越冷了。</span>
+            </div>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-base text-slate-800">She is getting more and more beautiful.</span>
+              <span className="text-sm text-slate-500">她变得越来越漂亮了。</span>
+            </div>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-base text-slate-800">We need more and more wood.</span>
+              <span className="text-sm text-slate-500">我们需要越来越多的木材。</span>
+            </div>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-base text-slate-800">The movie is getting more and more interesting.</span>
+              <span className="text-sm text-slate-500">这部电影变得越来越有意思了。</span>
+            </div>
+          </div>
+        </CollapsibleSection>
+        <CollapsibleSection label="比较级与 the" size="base">
+          <div className="mt-3 space-y-2 leading-7 pl-5">
+            <p className="text-sm text-slate-600">
+              比较级的前面一般不需加定冠词 the，但在有介词短语 of the two 出现在比较级句中的时候，比较级的前面必须加定冠词 the。
+            </p>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-base text-slate-800">I think this book is the more interesting of the two.</span>
+              <span className="text-sm text-slate-500">我觉得在这两幅画中，这一幅更有意思。</span>
+            </div>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-base text-slate-800">I think this book is more interesting than that one.</span>
+              <span className="text-sm text-slate-500">我觉得在这两幅画中，这一幅更有意思。</span>
+            </div>
+          </div>
+        </CollapsibleSection>
+      </section>
+
+      {/* 形容词最高级的用法 */}
+      <section className="mt-10">
+        <div className="inline-block rounded-md bg-yellow-300 px-4 py-2">
+          <h2 className="text-xl font-bold text-red-600">形容词最高级的用法</h2>
+        </div>
+        <CollapsibleSection label="最高级的基本概念" size="base">
+          <div className="mt-3 space-y-2 leading-7 pl-5">
+            <p className="text-sm text-slate-600">
+              比较级是将彼此独立的人或事物进行比较，
+            </p>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-base text-slate-800">You are taller than me.</span>
+              <span className="text-sm text-slate-500">你比我高。</span>
+            </div>
+            <p className="text-sm text-slate-600">
+              最高级则是把一个群体中的一员与该群体整体进行比较。
+            </p>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-base text-slate-800">You are the tallest student in the class.</span>
+              <span className="text-sm text-slate-500">你是班里最高的学生。</span>
+            </div>
+          </div>
+        </CollapsibleSection>
+        <CollapsibleSection label="the + 最高级 + in + 地方" size="base">
+          <div className="mt-3 space-y-2 leading-7 pl-5">
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-base text-slate-800">It is the most expensive car in the world.</span>
+              <span className="text-sm text-slate-500">这是世界上最贵的汽车。</span>
+            </div>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-base text-slate-800">My mother is the best person in China.</span>
+              <span className="text-sm text-slate-500">我的妈妈是中国最好的人。</span>
+            </div>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-base text-slate-800">My father is the most handsome man in my city.</span>
+              <span className="text-sm text-slate-500">我爸爸是我们城市里面最帅的男人。</span>
+            </div>
+          </div>
+        </CollapsibleSection>
+        <CollapsibleSection label="the + 序数词 + 最高级 + in + 地方" size="base">
+          <div className="mt-3 space-y-2 leading-7 pl-5">
+            <div className="rounded-lg bg-slate-50 px-4 py-2">
+              <p className="font-mono text-base text-slate-800">The Changjiang River is the longest river in China, but it is the third longest river in the world.</p>
+              <p className="mt-0.5 text-sm text-slate-500">长江是中国最长的河流，是世界第三长的河流。</p>
+            </div>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-base text-slate-800">The Huanghe River is the second longest river in China.</span>
+              <span className="text-sm text-slate-500">黄河是中国第二长的河流。</span>
+            </div>
+          </div>
+        </CollapsibleSection>
+      </section>
+
       {/* 特殊情况 */}
       <section className="mt-10">
         <h2 className="text-xl font-bold text-slate-950">特殊情况</h2>
@@ -127,7 +261,7 @@ export default function AdjectivesPage() {
           修饰 <span className="text-red-600 font-bold">不定代词</span>（<span className="font-mono font-semibold text-slate-900">something, anything, nothing, everything, somebody, anyone, nobody, everybody</span> 等）的形容词要后置，即<span className="text-red-600 font-bold">形容词要后置</span>。
         </p>
         <CollapsibleSection label="例句">
-          <div className="mt-3 space-y-0.5">
+          <div className="mt-3 space-y-0.5 pl-5">
             <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-base text-slate-800">
               <p>I want to eat something <span className="text-red-600 font-bold">nice</span>.</p>
               <p className="mt-0.5 text-sm text-slate-500">我想吃点好的。</p>
@@ -203,7 +337,7 @@ export default function AdjectivesPage() {
       <section className="mt-10">
         <h2 className="text-xl font-bold text-slate-950">形容词的比较级和最高级</h2>
         <CollapsibleSection label="规则详解" size="base">
-          <div className="mt-3 max-w-6xl text-base leading-7 text-slate-700">
+          <div className="mt-3 max-w-6xl pl-5 text-base leading-7 text-slate-700">
             <p>
               形容词具有<span className="text-yellow-600 font-bold">原级</span>、<span className="text-yellow-600 font-bold">比较级</span>和<span className="text-yellow-600 font-bold">最高级</span>三个等级比较。
             </p>
@@ -504,7 +638,8 @@ export default function AdjectivesPage() {
       {/* 特殊形式的比较级和最高级 */}
       <section className="mt-10">
         <h2 className="text-xl font-bold text-slate-950">特殊形式的比较级和最高级</h2>
-        <div className="mt-4 max-w-md">
+        <CollapsibleSection label="不规则变化及用法详解" size="base">
+        <div className="mt-3 max-w-md pl-5">
           <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
             <table className="w-full text-left text-sm">
               <thead className="bg-slate-950 text-white">
@@ -618,11 +753,13 @@ export default function AdjectivesPage() {
               </div>
             </div>
           </CollapsibleSection>
+        </CollapsibleSection>
       </section>
 
       {/* 不具有等级的形容词 */}
       <section className="mt-10">
         <h2 className="text-xl font-bold text-slate-950">不具有等级的形容词</h2>
+        <CollapsibleSection label="哪些形容词没有比较级" size="base">
         <div className="mt-3 max-w-6xl text-base leading-7 text-slate-700">
           <p>
             这些形容词本身就含有<span className="text-yellow-600 font-bold">绝对意义</span>，没有程度之分，因此通常<span className="text-red-600 font-bold">没有比较级和最高级</span>（即使有，逻辑上也不合理）：
@@ -653,6 +790,7 @@ export default function AdjectivesPage() {
             </span>
           ))}
         </div>
+        </CollapsibleSection>
       </section>
     </div>
   );
