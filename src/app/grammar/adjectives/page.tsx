@@ -540,7 +540,7 @@ export default function AdjectivesPage() {
           </div>
         </div>
           <CollapsibleSection label="farther / further 的区别" size="base">
-            <div className="mt-3 space-y-3">
+            <div className="mt-3 space-y-3 pl-5">
               <p className="text-sm leading-6 text-slate-600">
                 farther (farthest) / further (furthest) 这四个词都可以指<span className="font-semibold text-slate-800">实际的距离</span>。不过，further / furthest 可用于<span className="text-red-600 font-semibold">抽象意义</span>，表示"进一步的，更多的，更深入的"，常与抽象名词连用：
               </p>
