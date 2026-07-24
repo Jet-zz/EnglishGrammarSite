@@ -123,7 +123,7 @@ export default function AdjectivesPage() {
       {/* 特殊情况 */}
       <section className="mt-10">
         <h2 className="text-xl font-bold text-slate-950">特殊情况</h2>
-        <p className="mt-3 text-base leading-7 text-slate-700 max-w-3xl">
+        <p className="mt-3 text-base leading-7 text-slate-700 max-w-6xl">
           修饰 <span className="text-red-600 font-bold">不定代词</span>（<span className="font-mono font-semibold text-slate-900">something, anything, nothing, everything, somebody, anyone, nobody, everybody</span> 等）的形容词要后置，即<span className="text-red-600 font-bold">形容词要后置</span>。
         </p>
         <CollapsibleSection label="例句">
