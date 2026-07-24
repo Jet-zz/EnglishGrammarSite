@@ -552,7 +552,7 @@ export default function AdjectivesPage() {
                   ["further information", "更多的信息"],
                   ["further study", "深入研究"],
                 ].map(([en, zh]) => (
-                  <div key={en} className="flex items-center gap-x-3 rounded-lg bg-slate-50 px-3 py-1.5">
+                  <div key={en} className="flex items-center gap-x-3 rounded-lg bg-slate-50 pl-0 pr-3 py-1.5">
                     <span className="font-mono text-xs font-semibold text-slate-800">{en}</span>
                     <span className="text-xs text-slate-500">{zh}</span>
                   </div>
