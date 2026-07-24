@@ -627,7 +627,7 @@ export default function AdjectivesPage() {
       {/* 不具有等级的形容词 */}
       <section className="mt-10">
         <h2 className="text-xl font-bold text-slate-950">不具有等级的形容词</h2>
-        <div className="mt-3 max-w-3xl text-base leading-7 text-slate-700">
+        <div className="mt-3 max-w-6xl text-base leading-7 text-slate-700">
           <p>
             这些形容词本身就含有<span className="text-yellow-600 font-bold">绝对意义</span>，没有程度之分，因此通常<span className="text-red-600 font-bold">没有比较级和最高级</span>（即使有，逻辑上也不合理）：
           </p>
