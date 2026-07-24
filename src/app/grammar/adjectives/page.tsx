@@ -208,22 +208,23 @@ export default function AdjectivesPage() {
       {/* 形容词的比较级和最高级 */}
       <section className="mt-10">
         <h2 className="text-xl font-bold text-slate-950">形容词的比较级和最高级</h2>
-        <div className="mt-3 max-w-3xl text-base leading-7 text-slate-700">
-          <p>
-            形容词具有<span className="text-yellow-600 font-bold">原级</span>、<span className="text-yellow-600 font-bold">比较级</span>和<span className="text-yellow-600 font-bold">最高级</span>三个等级比较。
-          </p>
-          <p className="mt-2">
-            比较级和最高级有两种表达方式：<br />
-            第一种：在词尾<span className="text-yellow-600 font-bold">加 -er</span> 构成比较级，<span className="text-yellow-600 font-bold">加 -est</span> 构成最高级。<br />
-            第二种：在形容词<span className="text-yellow-600 font-bold">前面加 more</span> 构成比较级，<span className="text-yellow-600 font-bold">加 most</span> 构成最高级。
-          </p>
-          <p className="mt-2">
-            这两种构成方式与形容词的<span className="text-yellow-600 font-bold">音节数目</span>有关。<br />
-            此外，英语中还有一些形容词没有比较级和最高级的变化。
-          </p>
-        </div>
+        <CollapsibleSection label="规则详解" size="base">
+          <div className="mt-3 max-w-6xl text-base leading-7 text-slate-700">
+            <p>
+              形容词具有<span className="text-yellow-600 font-bold">原级</span>、<span className="text-yellow-600 font-bold">比较级</span>和<span className="text-yellow-600 font-bold">最高级</span>三个等级比较。
+            </p>
+            <p className="mt-2">
+              比较级和最高级有两种表达方式：<br />
+              第一种：在词尾<span className="text-yellow-600 font-bold">加 -er</span> 构成比较级，<span className="text-yellow-600 font-bold">加 -est</span> 构成最高级。<br />
+              第二种：在形容词<span className="text-yellow-600 font-bold">前面加 more</span> 构成比较级，<span className="text-yellow-600 font-bold">加 most</span> 构成最高级。
+            </p>
+            <p className="mt-2">
+              这两种构成方式与形容词的<span className="text-yellow-600 font-bold">音节数目</span>有关。<br />
+              此外，英语中还有一些形容词没有比较级和最高级的变化。
+            </p>
+          </div>
 
-        <div className="mt-4">
+          <div className="mt-4">
           {/* 单音节词 */}
           <ComparisionBlock
             title="常规形状：单音节词"
@@ -503,6 +504,7 @@ export default function AdjectivesPage() {
             </div>
           </ComparisionBlock>
         </div>
+        </CollapsibleSection>
       </section>
 
       {/* 特殊形式的比较级和最高级 */}
