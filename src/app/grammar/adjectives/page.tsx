@@ -826,6 +826,180 @@ export default function AdjectivesPage() {
         </div>
         </CollapsibleSection>
       </section>
+
+      {/* -ing形容词与-ed形容词 */}
+      <section className="mt-10">
+        <h2 className="text-xl font-bold text-slate-950">-ing形容词与-ed形容词</h2>
+        <CollapsibleSection label="特点与用法" size="base">
+          <div className="mt-3 max-w-6xl text-base leading-7 text-slate-700">
+            <p>
+              <span className="text-yellow-600 font-bold">-ing形容词</span> 修饰<span className="text-red-600 font-bold">事物</span>，表示"令人…的"
+            </p>
+            <p>
+              <span className="text-yellow-600 font-bold">-ed形容词</span> 修饰<span className="text-red-600 font-bold">人</span>，表示"感到…的"
+            </p>
+          </div>
+          <div className="mt-3 space-y-1.5">
+            <CollapsibleSection label="interesting / interested" size="base">
+            <div className="mt-2 space-y-0.5">
+              <div className="rounded-lg bg-slate-50 pr-4 py-1.5 font-mono text-base text-slate-800">
+                <p>The book is <span className="text-red-600 font-bold">interesting</span>.</p>
+                <p className="mt-0.5 text-sm text-slate-500">这本书是有趣的。</p>
+              </div>
+              <div className="rounded-lg bg-slate-50 pr-4 py-1.5 font-mono text-base text-slate-800">
+                <p>the <span className="text-red-600 font-bold">interesting</span> book</p>
+                <p className="mt-0.5 text-sm text-slate-500">一本有趣的书。</p>
+              </div>
+              <div className="rounded-lg bg-slate-50 pr-4 py-1.5 font-mono text-base text-slate-800">
+                <p>He is <span className="text-red-600 font-bold">interested</span>.</p>
+                <p className="mt-0.5 text-sm text-slate-500">他是感兴趣的。</p>
+              </div>
+              <div className="rounded-lg bg-slate-50 pr-4 py-1.5 font-mono text-base text-slate-800">
+                <p>the <span className="text-red-600 font-bold">interested</span> person</p>
+                <p className="mt-0.5 text-sm text-slate-500">一个感兴趣的人。</p>
+              </div>
+            </div>
+            </CollapsibleSection>
+
+            <CollapsibleSection label="exciting / excited" size="base">
+            <div className="mt-2 grid gap-2 sm:grid-cols-2">
+              <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-base text-slate-800">
+                <p>the <span className="text-red-600 font-bold">exciting</span> news</p>
+                <p className="mt-0.5 text-sm text-slate-500">激动人心的消息</p>
+              </div>
+              <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-base text-slate-800">
+                <p>the <span className="text-red-600 font-bold">excited</span> man</p>
+                <p className="mt-0.5 text-sm text-slate-500">显得很激动的人</p>
+              </div>
+            </div>
+            </CollapsibleSection>
+
+            <CollapsibleSection label="frightening / frightened" size="base">
+            <div className="mt-2 grid gap-2 sm:grid-cols-2">
+              <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-base text-slate-800">
+                <p>a <span className="text-red-600 font-bold">frightening</span> story</p>
+                <p className="mt-0.5 text-sm text-slate-500">让人毛骨悚然的故事</p>
+              </div>
+              <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-base text-slate-800">
+                <p>a <span className="text-red-600 font-bold">frightened</span> bird / boy</p>
+                <p className="mt-0.5 text-sm text-slate-500">受到惊吓的鸟 / 孩子</p>
+              </div>
+            </div>
+            </CollapsibleSection>
+
+            <CollapsibleSection label="annoying / annoyed" size="base">
+            <div className="mt-2 grid gap-2 sm:grid-cols-2">
+              <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-base text-slate-800">
+                <p>the <span className="text-red-600 font-bold">annoying</span> words</p>
+                <p className="mt-0.5 text-sm text-slate-500">令人气愤的话</p>
+              </div>
+              <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-base text-slate-800">
+                <p>the <span className="text-red-600 font-bold">annoyed</span> man</p>
+                <p className="mt-0.5 text-sm text-slate-500">被激怒的人</p>
+              </div>
+            </div>
+            </CollapsibleSection>
+
+            <CollapsibleSection label="例句对照" size="base">
+            <div className="mt-2 space-y-1.5">
+              {[
+                [
+                  ["My job is <span class=\"text-red-600 font-bold\">boring</span>.", "我的工作好无聊。"],
+                  ["I am <span class=\"text-red-600 font-bold\">bored</span> with my job.", "我厌倦了我的工作。"],
+                ],
+                [
+                  ["My job is <span class=\"text-red-600 font-bold\">interesting</span>.", "我的工作是有趣的。"],
+                  ["I am <span class=\"text-red-600 font-bold\">interested</span> in my job.", "我对我的工作感兴趣。"],
+                ],
+                [
+                  ["My job is <span class=\"text-red-600 font-bold\">tiring</span>.", "我的工作好磨人。"],
+                  ["I am always <span class=\"text-red-600 font-bold\">tired</span> after my work.", "我工作后总是很累。"],
+                ],
+                [
+                  ["My job is <span class=\"text-red-600 font-bold\">satisfying</span>.", "我的工作令人满意。"],
+                  ["I am <span class=\"text-red-600 font-bold\">satisfied</span> with my job.", "我对我的工作很满意。"],
+                ],
+              ].map(([left, right], i) => (
+                <div key={i} className="grid gap-2 sm:grid-cols-2">
+                  <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-base text-slate-800">
+                    <p dangerouslySetInnerHTML={{ __html: left[0] }} />
+                    <p className="mt-0.5 text-sm text-slate-500">{left[1]}</p>
+                  </div>
+                  <div className="rounded-lg bg-slate-50 px-4 py-1.5 font-mono text-base text-slate-800">
+                    <p dangerouslySetInnerHTML={{ __html: right[0] }} />
+                    <p className="mt-0.5 text-sm text-slate-500">{right[1]}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            </CollapsibleSection>
+          </div>
+        </CollapsibleSection>
+
+        <CollapsibleSection label={'-ing形容词可以修饰"人"'} size="base">
+          <div className="mt-3 max-w-6xl text-base leading-7 text-slate-700">
+            <p>
+              <span className="text-yellow-600 font-bold">-ing形容词</span> 也可以修饰<span className="text-red-600 font-bold">人</span>，描述这个"人"带给别人的感受。
+            </p>
+          </div>
+          <div className="mt-2 space-y-0.5">
+            <div className="rounded-lg bg-slate-50 pr-4 py-1.5 font-mono text-base text-slate-800">
+              <p>The man is <span className="text-red-600 font-bold">boring</span>.</p>
+              <p className="mt-0.5 text-sm text-slate-500">这个男人是烦人的。</p>
+            </div>
+            <div className="rounded-lg bg-slate-50 pr-4 py-1.5 font-mono text-base text-slate-800">
+              <p>The man is <span className="text-red-600 font-bold">bored</span>.</p>
+              <p className="mt-0.5 text-sm text-slate-500">这个男人是烦闷的。</p>
+            </div>
+            <div className="rounded-lg bg-slate-50 pr-4 py-1.5 font-mono text-base text-slate-800">
+              <p>the <span className="text-red-600 font-bold">boring</span> man</p>
+              <p className="mt-0.5 text-sm text-slate-500">一个烦人的人。</p>
+            </div>
+            <div className="rounded-lg bg-slate-50 pr-4 py-1.5 font-mono text-base text-slate-800">
+              <p>the <span className="text-red-600 font-bold">bored</span> man</p>
+              <p className="mt-0.5 text-sm text-slate-500">一个烦闷的人。</p>
+            </div>
+            <div className="rounded-lg bg-slate-50 pr-4 py-1.5 font-mono text-base text-slate-800">
+              <p><span className="text-purple-600 font-bold">bore</span> v. 使烦闷</p>
+            </div>
+          </div>
+          <div className="mt-3 space-y-0.5">
+            <div className="rounded-lg bg-slate-50 pr-4 py-1.5 font-mono text-base text-slate-800">
+              <p>The man is <span className="text-red-600 font-bold">annoying</span>.</p>
+              <p className="mt-0.5 text-sm text-slate-500">这个男人是烦人的。</p>
+            </div>
+            <div className="rounded-lg bg-slate-50 pr-4 py-1.5 font-mono text-base text-slate-800">
+              <p>The man is <span className="text-red-600 font-bold">annoyed</span>.</p>
+              <p className="mt-0.5 text-sm text-slate-500">这个男人是恼怒了。</p>
+            </div>
+            <div className="rounded-lg bg-slate-50 pr-4 py-1.5 font-mono text-base text-slate-800">
+              <p>the <span className="text-red-600 font-bold">annoying</span> man</p>
+              <p className="mt-0.5 text-sm text-slate-500">令人气愤的男人。</p>
+            </div>
+            <div className="rounded-lg bg-slate-50 pr-4 py-1.5 font-mono text-base text-slate-800">
+              <p>the <span className="text-red-600 font-bold">annoyed</span> man</p>
+              <p className="mt-0.5 text-sm text-slate-500">一个被惹恼了的男人。</p>
+            </div>
+            <div className="rounded-lg bg-slate-50 pr-4 py-1.5 font-mono text-base text-slate-800">
+              <p><span className="text-purple-600 font-bold">annoy</span> v. 使恼怒，烦人</p>
+            </div>
+          </div>
+          <div className="mt-3 space-y-0.5">
+            <div className="rounded-lg bg-slate-50 pr-4 py-1.5 font-mono text-base text-slate-800">
+              <p>He is <span className="text-red-600 font-bold">interesting</span> to listen to.</p>
+              <p className="mt-0.5 text-sm text-slate-500">听他讲话很有意思。✅</p>
+            </div>
+            <div className="rounded-lg bg-slate-50 pr-4 py-1.5 font-mono text-base text-slate-800">
+              <p>He is <span className="text-red-600 font-bold">interesting</span> to listen to.</p>
+              <p className="mt-0.5 text-sm text-slate-500 line-through">他对听别人讲话很感兴趣。❌</p>
+            </div>
+            <div className="rounded-lg bg-slate-50 pr-4 py-1.5 font-mono text-base text-slate-800">
+              <p>It is <span className="text-red-600 font-bold">interesting</span> to listen to him.</p>
+              <p className="mt-0.5 text-sm text-slate-500">听他讲话很有意思。</p>
+            </div>
+          </div>
+        </CollapsibleSection>
+      </section>
     </div>
   );
 }

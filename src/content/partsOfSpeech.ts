@@ -42,6 +42,7 @@ export const partsOfSpeech: PartOfSpeech[] = [
     examples: ["quickly", "very", "often", "carefully"],
     sentence: "He speaks English clearly.",
     note: "副词常用来说明时间、地点、方式、程度或频率。",
+    linkTo: "/grammar/adverbs",
   },
   {
     name: "代词",
