@@ -59,6 +59,7 @@ export const partsOfSpeech: PartOfSpeech[] = [
     examples: ["in", "on", "at", "for"],
     sentence: "The book is on the desk.",
     note: "介词后面通常接名词、代词或动名词，形成介词短语。",
+    linkTo: "/grammar/prepositions",
   },
   {
     name: "连词",
