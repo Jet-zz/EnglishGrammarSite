@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ExampleBlock } from "@/components/ExampleBlock";
 import { SectionHeading } from "@/components/SectionHeading";
 import { sentencePatterns, intro } from "@/content/sentencePatterns";
@@ -14,6 +15,12 @@ export default function SentencePatternsPage() {
       <section className="mt-6 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
         <h3 className="text-sm font-bold text-slate-950">{intro.title}</h3>
         <p className="mt-1 text-sm leading-6 text-slate-600">{intro.body}</p>
+        <Link
+          href="/grammar/sentence-elements"
+          className="mt-3 inline-block rounded-full bg-blue-50 px-4 py-1.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-100"
+        >
+          先复习：句子成分 →
+        </Link>
       </section>
 
       <div className="mt-3 grid gap-3">
