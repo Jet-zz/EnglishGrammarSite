@@ -886,9 +886,36 @@ function ClassificationSection() {
                     </div>
                     </div>
                     </CollapsibleSection>
-                    <CollapsibleSection label={<>while 位于句首，一般意为 "尽管"，引导让步状语从句。</>} size="base" labelClassName="text-slate-700 font-normal">
+                    <CollapsibleSection label={<><span className="text-yellow-600 font-bold">while</span> 位于句首，一般意为 "尽管"，引导让步状语从句。</>} size="base" labelClassName="text-slate-700 font-normal">
                     <div className="mt-2 max-w-6xl text-base leading-7 text-slate-700">
-                      {/* TODO */}
+                      <div className="rounded-lg bg-slate-50 pr-4 py-1.5">
+                        <p className="font-mono text-base text-slate-800">
+                          <span className="text-yellow-600 font-bold">While</span> many countries of the world celebrate their own Mother's Day at different times throughout the year, there are some countries such as Denmark, Finland, Italy, Turkey and Australia also celebrate Mother's Day on the second Sunday of May.
+                        </p>
+                        <p className="mt-0.5 text-sm text-slate-500">虽然世界上许多国家在一年中的不同时间庆祝各自的母亲节，但也有一些国家，如丹麦、芬兰、意大利、土耳其和澳大利亚，同样在五月的第二个星期日庆祝母亲节。</p>
+                      </div>
+                      <hr className="mt-3 border-dashed border-slate-300" />
+                      <p className="mt-3">
+                        <span className="text-yellow-600 font-bold">no matter + what, who, when, where, which, how</span> 或者 <span className="text-yellow-600 font-bold">whatever, whoever, whenever, wherever, whichever, however</span> 来引导让步状语从句，表示 "无论"。请注意，这几个连词除了 <span className="text-yellow-600 font-bold">however</span> 外，一般都是单独使用，而 <span className="text-yellow-600 font-bold">however</span> 后面通常要接形容词或副词。
+                      </p>
+                      <div className="mt-2 rounded-lg bg-slate-50 pr-4 py-1.5">
+                        <p className="font-mono text-base text-slate-800">
+                          We have decided to do so, <span className="text-yellow-600 font-bold">whatever</span> happens.
+                        </p>
+                        <p className="mt-0.5 text-sm text-slate-500">我已经决定这么做了，无论发生什么。</p>
+                      </div>
+                      <div className="mt-1 rounded-lg bg-slate-50 pr-4 py-1.5">
+                        <p className="font-mono text-base text-slate-800">
+                          <span className="text-yellow-600 font-bold">Whoever</span> may trouble you, I will help you to the last.
+                        </p>
+                        <p className="mt-0.5 text-sm text-slate-500">无论谁找你的麻烦，我都会帮你到底。</p>
+                      </div>
+                      <div className="mt-1 rounded-lg bg-slate-50 pr-4 py-1.5">
+                        <p className="font-mono text-base text-slate-800">
+                          <span className="text-yellow-600 font-bold">No matter what</span> I did to the money, you still wanted it because it did not decrease in value.
+                        </p>
+                        <p className="mt-0.5 text-sm text-slate-500">无论我如何对待那张钞票，你们还是想要它，因为它并没贬值。</p>
+                      </div>
                     </div>
                     </CollapsibleSection>
                   </div>
