@@ -64,6 +64,7 @@ function ClassificationSection() {
     "目的状语从句",
     "结果状语从句",
     "让步状语从句",
+    "表示让步转折关系的介词和副词",
     "比较状语从句",
     "方式状语从句",
   ];
@@ -915,6 +916,103 @@ function ClassificationSection() {
                           <span className="text-yellow-600 font-bold">No matter what</span> I did to the money, you still wanted it because it did not decrease in value.
                         </p>
                         <p className="mt-0.5 text-sm text-slate-500">无论我如何对待那张钞票，你们还是想要它，因为它并没贬值。</p>
+                      </div>
+                    </div>
+                    </CollapsibleSection>
+                  </div>
+                ) : name === "表示让步转折关系的介词和副词" ? (
+                  <div className="mt-3 max-w-6xl text-base leading-7 text-slate-700">
+                    <p>
+                      <span className="text-yellow-600 font-bold">despite</span> 即使；尽管；
+                    </p>
+                    <p>
+                      <span className="text-yellow-600 font-bold">in spite of</span> 尽管；不管
+                    </p>
+                    <p>
+                      <span className="text-yellow-600 font-bold">notwithstanding</span> 尽管
+                    </p>
+                    <p className="mt-2">
+                      需要注意的是，<span className="text-yellow-600 font-bold">although</span> 和 <span className="text-yellow-600 font-bold">though</span> 等是连词，因此后面只接从句（有时是省略形式的从句），而这里的介词只接名词（短语）
+                    </p>
+                    <div className="mt-2 rounded-lg bg-slate-50 pr-4 py-1.5">
+                      <p className="font-mono text-base text-slate-800">
+                        <span className="text-yellow-600 font-bold">Though</span> he was inexperienced, he did a very good job.
+                      </p>
+                      <p className="mt-0.5 text-sm text-slate-500">尽管他没有经验，但他做得非常好。</p>
+                    </div>
+                    <div className="mt-1 rounded-lg bg-slate-50 pr-4 py-1.5">
+                      <p className="font-mono text-base text-slate-800">
+                        <span className="text-yellow-600 font-bold">In spite of</span> his inexperience, he did a very good job.
+                      </p>
+                      <p className="mt-0.5 text-sm text-slate-500">尽管他没有经验，但他做得非常好。</p>
+                    </div>
+                    <div className="mt-1 rounded-lg bg-slate-50 pr-4 py-1.5">
+                      <p className="font-mono text-base text-slate-800">
+                        <span className="text-yellow-600 font-bold">In spite of</span> his being inexperienced, he did a very good job.
+                      </p>
+                      <p className="mt-0.5 text-sm text-slate-500">尽管他没有经验，但他做得非常好。</p>
+                    </div>
+                    <div className="mt-1 rounded-lg bg-slate-50 pr-4 py-1.5">
+                      <p className="font-mono text-base text-slate-800">
+                        <span className="text-yellow-600 font-bold">Despite</span> her great age, she still looks very graceful.
+                      </p>
+                      <p className="mt-0.5 text-sm text-slate-500">尽管她年纪很大，但看起来仍然非常优雅。</p>
+                    </div>
+                    <div className="mt-1 rounded-lg bg-slate-50 pr-4 py-1.5">
+                      <p className="font-mono text-base text-slate-800">
+                        <span className="text-yellow-600 font-bold">Notwithstanding</span> the heat of the sun we must go out.
+                      </p>
+                      <p className="mt-0.5 text-sm text-slate-500">尽管太阳很热，我们还是必须出去。</p>
+                    </div>
+                    <div className="mt-1 rounded-lg bg-slate-50 pr-4 py-1.5">
+                      <p className="font-mono text-base text-slate-800">
+                        <span className="text-yellow-600 font-bold">Despite</span> a thorough investigation, no trace of Dr Southwell has been found.
+                      </p>
+                      <p className="mt-0.5 text-sm text-slate-500">尽管进行了彻底的调查，仍未发现 Southwell 博士的任何踪迹。</p>
+                    </div>
+                  </div>
+                ) : name === "比较状语从句" ? (
+                  <div className="mt-3 max-w-6xl text-base leading-7 text-slate-700">
+                    <p>
+                      比较状语从句的结构或句型很多，<span className="text-yellow-600 font-bold">as</span> 引导比较状语从句，其基本结构是<span className="text-yellow-600 font-bold">as...as</span>。前一个 as 是副词，而后一个 as 才是比较状语从句的连词。
+                    </p>
+                    <CollapsibleSection label={<>as + 形容词 或 副词 + as</>} size="base" labelClassName="text-slate-700 font-normal">
+                    <div className="mt-2 max-w-6xl text-base leading-7 text-slate-700">
+                      <div className="rounded-lg bg-slate-50 pr-4 py-1.5">
+                        <p className="font-mono text-base text-slate-800">
+                          The work is not <span className="text-yellow-600 font-bold">as</span> difficult <span className="text-yellow-600 font-bold">as</span> you think.
+                        </p>
+                        <p className="mt-0.5 text-sm text-slate-500">这项工作没有你想象的那么难。</p>
+                      </div>
+                      <div className="mt-1 rounded-lg bg-slate-50 pr-4 py-1.5">
+                        <p className="font-mono text-base text-slate-800">
+                          I can run <span className="text-yellow-600 font-bold">as</span> fast <span className="text-yellow-600 font-bold">as</span> the horse does.
+                        </p>
+                        <p className="mt-0.5 text-sm text-slate-500">我能跑得和马一样快。</p>
+                      </div>
+                      <p className="mt-3 font-bold text-yellow-600">
+                        结构1：as（so）+ 形容词 或 副词 + as，在否定句中第一个 as 可用 so 代替
+                      </p>
+                      <div className="mt-2 rounded-lg bg-slate-50 pr-4 py-1.5">
+                        <p className="font-mono text-base text-slate-800">
+                          This room is not <span className="text-yellow-600 font-bold">so</span> large <span className="text-yellow-600 font-bold">as</span> the one we saw yesterday.
+                        </p>
+                        <p className="mt-0.5 text-sm text-slate-500">这个房间没有我们昨天看到的那个大。</p>
+                      </div>
+                      <p className="mt-3 font-bold text-yellow-600">
+                        结构2：as much as 和…… 一样
+                      </p>
+                      <div className="mt-2 rounded-lg bg-slate-50 pr-4 py-1.5">
+                        <p className="font-mono text-base text-slate-800">
+                          I love pandas <span className="text-yellow-600 font-bold">as much as</span> you do.
+                        </p>
+                        <p className="mt-0.5 text-sm text-slate-500">我和你一样喜欢熊猫。</p>
+                      </div>
+                      <div className="mt-1 rounded-lg bg-slate-50 pr-4 py-1.5">
+                        <p className="font-mono text-base text-slate-800">
+                          I hate Lewis and his kind just <span className="text-yellow-600 font-bold">as much as</span> you do.
+                        </p>
+                        <p className="mt-0.5 text-sm text-slate-500">我和你一样痛恨刘易斯这样的人。</p>
                       </div>
                     </div>
                     </CollapsibleSection>
