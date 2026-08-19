@@ -1017,6 +1017,39 @@ function ClassificationSection() {
                     </div>
                     </CollapsibleSection>
                   </div>
+                ) : name === "方式状语从句" ? (
+                  <div className="mt-3 max-w-6xl text-base leading-7 text-slate-700">
+                    <p>
+                      <span className="text-yellow-600 font-bold">as</span> 和 <span className="text-yellow-600 font-bold">just as</span> 如……，犹如……，正如……，依照……，就像......
+                    </p>
+                    <div className="mt-2 rounded-lg bg-slate-50 pr-4 py-1.5">
+                      <p className="font-mono text-base text-slate-800">
+                        Please do it <span className="text-yellow-600 font-bold">as</span> I told you.
+                      </p>
+                      <p className="mt-0.5 text-sm text-slate-500">请按照我所讲的去做。</p>
+                    </div>
+                    <div className="mt-1 rounded-lg bg-slate-50 pr-4 py-1.5">
+                      <p className="font-mono text-base text-slate-800">
+                        They watched her closely <span className="text-yellow-600 font-bold">as</span> a cat watches a rat.
+                      </p>
+                      <p className="mt-0.5 text-sm text-slate-500">他们严密监视她，就好像猫盯着老鼠那样。</p>
+                    </div>
+                    <div className="mt-1 rounded-lg bg-slate-50 pr-4 py-1.5">
+                      <p className="font-mono text-base text-slate-800">
+                        The whole operation went exactly <span className="text-yellow-600 font-bold">as</span> it had been planned.
+                      </p>
+                      <p className="mt-0.5 text-sm text-slate-500">整个行动严格按照计划进行。</p>
+                    </div>
+                    <p className="mt-3">
+                      <span className="text-yellow-600 font-bold">as if</span> / <span className="text-yellow-600 font-bold">as though</span> 意为 "好像，仿佛"，引导的从句可以用陈述语气，表示所说的情况是事实或实现的可能性较大；也可以用虚拟语气，表示不符合事实或与事实相反的情况，动词是 be 时，一般用 were。
+                    </p>
+                    <div className="mt-2 rounded-lg bg-slate-50 pr-4 py-1.5">
+                      <p className="font-mono text-base text-slate-800">
+                        The little boy spoke <span className="text-yellow-600 font-bold">as if</span> he were a grown-up.
+                      </p>
+                      <p className="mt-0.5 text-sm text-slate-500">那小男孩说起话来像个大人似的。</p>
+                    </div>
+                  </div>
                 ) : (
                   <div className="mt-3 max-w-6xl text-base leading-7 text-slate-700">
                     {/* TODO */}
